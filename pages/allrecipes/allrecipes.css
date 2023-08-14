@@ -1,0 +1,316 @@
+#containerCards{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+    justify-items: center;
+}
+
+.img-holder{
+    height: 30rem;
+    max-width: 30rem;
+ 
+}
+
+.recipeImg{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.allrecipesMain{
+    width: 100%;
+    position: relative;
+}
+
+.categories{
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    max-width: 80rem;
+    margin: 0 auto;
+    margin-bottom: 3rem;
+    margin-top: 6rem;
+}
+
+.categoryBtn{
+    padding: 0.5rem 1.2rem;
+    background: black;
+    color: white;
+    border-radius: 2rem;
+    font-size: 1.2rem;
+
+}
+
+.categoryBtn.active{
+    background: white;
+    color: black;
+    border-radius: 2rem;
+    border: 2px solid black;
+    
+}
+
+.gridspan-4, .zeroResults{
+    padding-top: 5rem;
+    grid-column: 1/-1;
+    grid-row: 1/-1;
+    text-align: center;
+    font-size: 9rem;
+}
+
+.card{
+    border: none;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    max-width: 40rem;
+}
+
+.uploaderADiv{
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+.uploaderADiv h4{
+    margin-bottom: 0;
+}
+
+.img-uploadedBy{
+    height: 24px;
+    width: 24px;
+    object-fit: cover;
+    border-radius: 5rem;
+    overflow: hidden;
+}
+
+.uploaderImg{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.containerCards li{
+    height: 35rem;
+}
+
+
+  
+  
+  
+
+  
+   @media (min-width: 200px) {
+  
+    #containerCards{
+     
+        grid-template-columns: 1fr;
+  
+    }
+    .categories{
+ 
+        grid-template-columns: 1fr 1fr;
+
+    }
+    
+
+  
+  }
+   @media (min-width: 400px) {
+  
+    #containerCards{
+     
+        grid-template-columns: 1fr;
+  
+    }
+
+    .categories{
+ 
+        grid-template-columns: 1fr 1fr 1fr;
+
+    }
+    
+
+  
+  }
+   @media (min-width: 650px) {
+  
+  
+    #containerCards{
+     
+        grid-template-columns: 1fr 1fr;
+  
+    }
+    .categories{
+ 
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+
+    }
+    
+  
+  }
+  
+  
+  
+  
+  
+
+  
+  @media (min-width: 800px) {
+  
+
+
+    #containerCards{
+     
+        grid-template-columns: 1fr 1fr 1fr;
+  
+    }
+
+    
+    
+
+  
+  }
+  
+  
+  
+  
+  
+
+  @media (min-width: 992px) {
+  
+
+    #containerCards{
+     
+        grid-template-columns: 1fr 1fr 1fr;
+  
+    }
+    .categories{
+ 
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+
+    }
+
+    
+
+  
+  }
+  
+  
+  
+  
+  
+  
+  @media (min-width: 1200px) {
+  
+    #containerCards{
+     
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+  
+    }
+    
+  
+    }
+
+    .controls-item {
+        display: inline-block;
+    }
+  
+
+    #pagination-wrapper{
+        display: flex;
+        gap: 2rem;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .container-pagination{
+        margin-top: 7rem;
+        width: 100%;
+        
+    }
+
+    .btn-page{
+        background: black;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+    }
+  
+
+
+
+
+
+@media screen and (min-width: 576px) {
+  .container {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}
+
+
+.container-pagination{
+    margin-bottom: 8rem;
+}
+
+.btnContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2rem;
+}
+.page-btn {
+  width: 3.5rem;
+  height: 3.5rem;
+  background: white;
+  border-color: transparent;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0.5rem;
+  transition: var(--transition);
+  color: black;
+  padding: 0.5rem;
+  font-size: 1.6rem;
+}
+.active-btn {
+  background: black;
+  color: white;
+}
+.prev-btn,
+.next-btn {
+  background: transparent;
+  border-color: transparent;
+  font-weight: bold;
+  text-transform: capitalize;
+  letter-spacing: var(--spacing);
+  margin: 0.5rem;
+  font-size: 1.2em;
+  cursor: pointer;
+  background: black;
+  color: white;
+  padding: 0.4rem 1.4rem;
+  border-radius: 4rem;
+}
+
+@media screen and (min-width: 775px) {
+  .btnContainer {
+    margin: 0 auto;
+    max-width: 700px;
+  }
+}
+
+.pageNumsInput{
+    height: 3rem;
+    width: 8rem;
+    background: black;
+    color: white;
+}
+
+h4{
+    margin-bottom: 0;
+}
+
+  
+  
+
+  

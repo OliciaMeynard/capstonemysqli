@@ -1,0 +1,17 @@
+.profileEmailPic{
+    height: 9rem;
+    width: 9rem;
+    object-fit: cover;
+    border-radius: 50rem;
+}
+
+.btn-sendmail{
+    background: black;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+}
+
+.column .form-control{
+    font-size: 1.5rem;
+}
