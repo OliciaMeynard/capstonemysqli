@@ -1,5 +1,6 @@
 // export const checkIfLoggedIn = 'api/checkIfLoggedIn.php'
 export const fetchRecentRecipes = 'api/fetchRecentRecipes.php'
+export const fetchFollowing = 'api/fetchFollowing.php'
 export const sendmailprofile = '../../api/sendmailprofile.php';
 export const uploadApi = '../../api/uploadRecipe.php';
 export const registerApi = '../../api/signUp.php'

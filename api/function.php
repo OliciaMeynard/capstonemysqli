@@ -32,6 +32,11 @@ function getAllComments($con, $recipeId){
     $data = array();
 
     while ($row = $results->fetch_assoc()){
+
+        
+        $timestamp=strtotime($row['datePosted']);
+        $formattedDate = ago( $timestamp );
+        $row['formattedDate'] = $formattedDate;
         array_push($data, $row);
     }
 
@@ -42,7 +47,31 @@ function getAllComments($con, $recipeId){
 
 
 
+function ago( $time ){
+    $periods = array("second", "minute", "hour", "day", "week", "month", "year", "decade");
+    $lengths = array("60","60","24","7","4.35","12","10");
+ 
+    $now = time();
+ 
+        $difference     = $now - $time;
+        $tense         = "ago";
+ 
+    for($j = 0; $difference >= $lengths[$j] && $j < count($lengths)-1; $j++) {
+        $difference /= $lengths[$j];
+    }
+ 
+    $difference = round($difference);
+ 
+    if($difference != 1) {
+        $periods[$j].= "s";
+    }
+ 
+    return "$difference $periods[$j] ago ";
+}
 
+// $date='2016-01-21 23:15:00';
+// $timestamp=strtotime($date);
+// echo ago( $timestamp );
 
 
 

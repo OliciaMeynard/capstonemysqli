@@ -129,7 +129,7 @@
   }
   
   body {
-    background-color: var(--white);
+   background: #efefee;
     color: var(--eerie-black);
     font-size: 1.6rem;
     line-height: 1.5;
@@ -324,6 +324,12 @@
   .search-btn .span, .upload-btn .span, .btn-logIn .span,
   .header .btn { display: none; }
 
+  .header-nav{
+    width: 100%;
+    background: white;
+    box-shadow: 0 5px 5px 3px #0000001c;
+  }
+
   .btn-logIn{
 
     padding: 0.5rem;
@@ -332,6 +338,8 @@
   .header {
     position: relative;
     padding-block: 25px;
+    background: var(--white);
+    margin-bottom: 5rem;
   }
   
   .header .container {
@@ -950,6 +958,10 @@
    * RECENT POST
    */
 
+   .recent{
+    background: white;
+    border-radius: 1.5rem;
+   }
 
 
   .recent .btn { margin-block-start: 70px; }
@@ -1157,4 +1169,18 @@
   color: white;
   border-radius: 2rem;
 
+}
+
+.title-wrapper{
+  display: flex;
+}
+
+.title-wrapper .h2.section-title{
+  font-size: 4rem;
+}
+
+#containerCards{
+  background-color: white;
+  padding: 2rem;
+  border-radius: 1.5rem;
 }

@@ -72,3 +72,12 @@ p{
     cursor: pointer;
 }
 
+
+.hideCommentDeleteDiv{
+    display: none;
+}
+
+.deleteCommentBtn{
+
+    padding: 0.4rem;
+}

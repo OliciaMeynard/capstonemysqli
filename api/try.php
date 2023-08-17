@@ -2,31 +2,33 @@
 
 require_once("config.php");
 
-       $query = "SELECT * FROM ".TBL_SUBSCRIBERS." WHERE userTo = 'sheene' AND
-                                userFrom = 'blazeDreyden'";
+                    
+function ago( $time ){
+    $periods = array("second", "minute", "hour", "day", "week", "month", "year", "decade");
+    $lengths = array("60","60","24","7","4.35","12","10");
+ 
+    $now = time();
+ 
+        $difference     = $now - $time;
+        $tense         = "ago";
+ 
+    for($j = 0; $difference >= $lengths[$j] && $j < count($lengths)-1; $j++) {
+        $difference /= $lengths[$j];
+    }
+ 
+    $difference = round($difference);
+ 
+    if($difference != 1) {
+        $periods[$j].= "s";
+    }
+ 
+    return "$difference $periods[$j] ago ";
+}
 
-        $results= $con->query($query);
-                        
-        $data = array();
-                        
-        while ($row = $results->fetch_assoc()){
-        array_push($data, $row);
-        }
+$date='2016-01-21 23:15:00';
+$timestamp=strtotime($date);
+echo ago( $timestamp );
 
-      echo count($data) . '<br>';
-
-
-
-
-
-
-
-$username = 'meynard';
-$Nuser = new User($con, $username);
-
-
-
-var_dump($Nuser->getProfilePic());
 
 
 ?>

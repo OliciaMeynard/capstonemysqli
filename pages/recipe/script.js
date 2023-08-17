@@ -1,6 +1,7 @@
 import * as Routes from '../../js/routes.js'
 import * as nav from '../../js/nav.js'
 import * as footer from '../../js/createFooter.js'
+import * as deleteComment from './deleteComment.js'
 import * as subscribe from './subscribe.js'
 import * as comments from './comments.js'
 import * as checkLoggedIn from '../../js/checkLoggedIn.js'
@@ -23,6 +24,7 @@ let uploaderDiv = document.querySelector('.uploaderDiv')
 
 export let uploadedBy;
 export let loggedUser;
+export let isLoggedIn;
 
 
 
@@ -100,9 +102,11 @@ function show(){
             $('#uploadedByText').text(parseResponse.data.uploadedBy)
             $('.commentCount').text(parseResponse.data.sumOfComments + ' Comments')
             $('.descriptionRecipe').text(parseResponse.data.description)
- 
+
             uploadedBy = parseResponse.data.uploadedBy
             loggedUser = parseResponse.data.loggedUser
+            isLoggedIn = parseResponse.data.ifLoggedIn
+
 
             uploaderImg.setAttribute("src", `../../uploads/profpic/${parseResponse.data.uploaderProfilePic === null ? 'default.webp' : parseResponse.data.uploaderProfilePic}`);
     
@@ -158,7 +162,7 @@ favoriteButton.addEventListener('click', (e)=>{
 
 
 ////////////FETCH ALL COMMENTS
-function fetchAllComments(){
+export function fetchAllComments(){
     let idRequest = {
         "id" : idUrl
     } 
@@ -168,31 +172,17 @@ function fetchAllComments(){
         "data" : "allComments=" + JSON.stringify(idRequest), //auth will be our php variable $_POST['auth']
         "success" : function (response) { //success yung response
             let parseResponse = JSON.parse(response);
-            // console.log(response)
-            //  console.log(parseResponse)
+            console.log(parseResponse.data)
+             console.log(uploadedBy, loggedUser, isLoggedIn)
             
              if(parseResponse.status === 200){
 
-                commentsContainer.textContent = '';
+                commentsContainer.innerHTML = '';
                 
 
-                 parseResponse.data.map((comment)=>{
+                 parseResponse.data.map((comment, i)=>{
 
-                    
-
-                     let markup = `<div class="singleCommentDiv mb-5">
-                     <div class="profileImageCommenterDiv">
-                         <img src="../../uploads/profpic/${comment.profilePic === null ? 'default.webp' : comment.profilePic}" class="profileImageCommenter" alt="">
-                     </div>
-                     <div class="commenterInfo">
-                         <h3 class="commenterName mb-2">${comment.postedBy}</h3>
-                         <p class="datePosted text-muted fs-5">${comment.datePosted}</p>
-                         <p class="commentBody"> ${comment.body}</p>
-                     </div>
-                     
-                    </div>`
-    
-                    commentsContainer.insertAdjacentHTML('beforeend', markup)
+                    displayComment(comment, loggedUser,  uploadedBy, parseResponse.data)
     
                  })
 
@@ -219,4 +209,75 @@ footer.createFooter('../../assets/imgs/logo.png');
 
 
 
+export function displayComment(comment, loggedUser,  uploadedBy){
+
+    
+    const singleCommentDiv = document.createElement('div')
+    singleCommentDiv.classList.add('singleCommentDiv', 'mb-5')
+    singleCommentDiv.setAttribute('data-comment', `${comment.postedBy}`)
+
+    const profileImageCommenterDiv = document.createElement('div')
+    profileImageCommenterDiv.classList.add('profileImageCommenterDiv')
+    const profileImageCommenter = document.createElement('img')
+    profileImageCommenter.setAttribute('src', `../../uploads/profpic/${comment.profilePic === null ? 'default.webp' : comment.profilePic}`)
+    profileImageCommenter.classList.add('profileImageCommenter')
+    profileImageCommenterDiv.append(profileImageCommenter)
+    singleCommentDiv.append(profileImageCommenterDiv)
+
+    const commenterInfo = document.createElement('div')
+    commenterInfo.classList.add('commenterInfo')
+    const commenterName = document.createElement('h3')
+    commenterName.classList.add('commenterName', 'mb-2')
+    commenterName.innerText = comment.postedBy
+    const datePosted = document.createElement('p')
+    datePosted.classList.add('datePosted', 'text-muted', 'fs-5')
+    datePosted.innerText = comment.formattedDate
+    const commentBody = document.createElement('p')
+    commentBody.classList.add('commentBody')
+    commentBody.innerText = comment.body
+
+    commenterInfo.append(commenterName, datePosted, commentBody)
+    singleCommentDiv.append(commenterInfo)
+
+
+
+
+    if(loggedUser === null){
+        return commentsContainer.append(singleCommentDiv)
+
+    }
+    
+    else if( loggedUser === uploadedBy){
+        const deleteCommentDiv = document.createElement('div')
+        deleteCommentDiv.classList.add('deleteCommentDiv')
+        const deleteCommentBtn = document.createElement('button')
+        deleteCommentBtn.classList.add('deleteCommentBtn')
+        deleteCommentBtn.innerHTML = `<ion-icon name="trash-outline" class='deleteCommentIcon'></ion-icon>`
+        deleteCommentDiv.append(deleteCommentBtn)
+        deleteCommentBtn.addEventListener('click', () =>
+        deleteComment.deleteComment(comment)
+        )
+
+        singleCommentDiv.append(deleteCommentDiv)
+        commentsContainer.append(singleCommentDiv)
+
+    }
+
+    else if(loggedUser != null && loggedUser != uploadedBy){
+        const deleteCommentDiv = document.createElement('div')
+        deleteCommentDiv.classList.add('deleteCommentDiv', `${singleCommentDiv.dataset.comment === loggedUser ? 'show' : 'hideCommentDeleteDiv'}`)
+        const deleteCommentBtn = document.createElement('button')
+        deleteCommentBtn.classList.add('deleteCommentBtn')
+        deleteCommentBtn.innerHTML = `<ion-icon name="trash-outline" class='deleteCommentIcon'></ion-icon>`
+        deleteCommentDiv.append(deleteCommentBtn)
+        deleteCommentBtn.addEventListener('click', () =>
+        deleteComment.deleteComment(comment)
+        )
+        
+
+        singleCommentDiv.append(deleteCommentDiv)
+        commentsContainer.append(singleCommentDiv)
+    }
+
+}
 

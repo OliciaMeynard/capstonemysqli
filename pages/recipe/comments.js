@@ -32,19 +32,9 @@ function store(){
 
                     
 
-                     let markup = `<div class="singleCommentDiv">
-                     <div class="profileImageCommenterDiv">
-                         <img src="../../uploads/profpic/${comment.profilePic === null ? 'dedault.webp' : comment.profilePic}" class="profileImageCommenter" alt="">
-                     </div>
-                     <div class="commenterInfo">
-                         <h2 class="commenterName">${comment.postedBy}</h2>
-                         <p class="datePosted">${comment.datePosted}</p>
-                         <p class="commentBody"> ${comment.body}</p>
-                     </div>
-                     
-                    </div>`
-    
-                    commentsContainer.insertAdjacentHTML('beforeend', markup)
+
+                    script.displayComment(comment, script.loggedUser, script.uploadedBy)
+                    
     
                  })
 

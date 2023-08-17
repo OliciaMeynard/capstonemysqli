@@ -28,15 +28,7 @@ if(isset($_GET["show"])){
         $recipeData['loggedUser'] = $userLoggedInObj->getUserName();
         $recipeData['loggedUserProfilePic'] = $userLoggedInObj->getProfilePic();
 
-        //////CHECK IF SUBBED
-            // $userTo = $recipe->getUploadedBy();
-            // $userFrom = $userLoggedInObj->getUserName();
-            // $query = $con->prepare("SELECT * FROM ".TBL_SUBSCRIBERS." WHERE userTo=:userTo AND
-            // userFrom=:userFrom");
-            // $query->bindParam(":userTo", $userTo);
-            // $query->bindParam(":userFrom", $userFrom);
-            // $query->execute();   
-            // $recipeData['ifSubbed'] = $query->rowCount();;
+
 
             
             $userTo = $recipe->getUploadedBy();

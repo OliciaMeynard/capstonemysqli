@@ -29,6 +29,10 @@ if(isset($_POST['store'])) {
         $response = createResponse(200,'OK', 'Successfully Added and fetch new comment', $results  );
     }
 
+    if(!$wasSuccessful){
+        $response = "One or more parameters are not passed into subscribe.php the file";
+    }
+
 
     echo json_encode($response);
 
@@ -39,11 +43,25 @@ if(isset($_POST['store'])) {
     // return new comment html
 
 }
-else {
-    $response = "One or more parameters are not passed into subscribe.php the file";
+
+if(isset($_POST['destroy'])){
+    $id = json_decode($_POST['destroy']);
+
+    $query = ("DELETE FROM  ".TBL_COMMENTS." WHERE id = '$id' ");
+    $isDeleted = $con->query($query);   
+
+
+
+   
+    if($isDeleted){
+        $response = createResponse(200, "success", "successfully Deleted");
+
+    } else {
+        $response = createResponse(401, "Error", "Error deleting");
+    }
+
     echo json_encode($response);
 }
-
 
 
 

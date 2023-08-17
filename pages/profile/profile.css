@@ -142,13 +142,16 @@
 } */
 
 .recipePostSection{
-    max-width: 140rem;
+    max-width: 120rem;
     margin: 0 auto;
     border-radius: 1rem;
     overflow: hidden;
     margin-top: 4rem;
     gap: 1rem;
     justify-content: center;
+    background:  white;
+    border-radius: 1.5rem;
+    padding: 2rem;
 }
 
 .recipeImgDiv{
@@ -196,6 +199,10 @@
 
 main{
     position: relative;
+}
+
+.card{
+    border: none;
 }
 
 

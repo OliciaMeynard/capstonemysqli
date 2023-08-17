@@ -2,8 +2,15 @@
     max-width: 90rem;
     padding: 2rem;
     margin: auto auto;
-    font-size: 1.8remrem;
+    font-size: 1.8rem;
     margin-top: 4rem;
+    background: white;
+    border-radius: 1.5rem;
+    margin-bottom: 6rem;
+}
+
+input textarea{
+    background-color: #efefee;
 }
 
 .form-control, .form-select{

@@ -7,6 +7,7 @@ html, body{
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+
 }
 
 
@@ -230,6 +231,7 @@ a:link{
     max-width: 60rem;
     padding: 2rem;
     margin: auto auto;
+
 }
 
 /* SINGLE VIDEO PAGE */
@@ -498,6 +500,10 @@ padding-bottom: 1.5rem;
     right: 2rem;
 }
 
+
+.followingIndex, .following-recent{
+    display: none;
+}
 
 
 
