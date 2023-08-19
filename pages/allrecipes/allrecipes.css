@@ -51,7 +51,7 @@
 }
 
 .gridspan-4, .zeroResults{
-    padding-top: 5rem;
+ 
     grid-column: 1/-1;
     grid-row: 1/-1;
     text-align: center;

@@ -18,23 +18,37 @@ if(isset($_GET["show"])){
             $data = array();
 
             while ($row = $result->fetch_assoc()){
+                $change = $row['signUpDate'];
+                $row['formattedDateSignUp'] = date("M j, Y", strtotime($change));
                 array_push($data, $row);
             }
 
 
             $username = $data[0]['username'];
 
+            /////followers
             $followers = "SELECT * FROM ".TBL_SUBSCRIBERS." WHERE userTo = '$username'";
             $resultfollowers = $con->query($followers);   
             $followersData = array();
-            while ($row = $resultfollowers->fetch_assoc()){
+            while ($row = $resultfollowers->fetch_assoc()){   
                 array_push($followersData, $row);
             }
 
+            for ($i = 0; $i < count($followersData); $i++) {
+
+                // SELECT * FROM recipes INNER JOIN users WHERE recipes.uploadedBy = 'meynard' AND users.username = 'meynard';
+                $queryFollowers = "SELECT * FROM ".TBL_USERS." WHERE username = '". $followersData[$i]['userFrom']."'";
+                $queryFollowersData = $con->query($queryFollowers); 
+                while ($row = $queryFollowersData->fetch_assoc()){
+                    $followersData[$i]['profilePic'] = $row['profilePic'];
+                    $followersData[$i]['uid'] = $row['uid'];
+                }
+          
+            }
 
             $data[0]['followers'] = $followersData;
 
-
+            //////following
             $following = ("SELECT * FROM ".TBL_SUBSCRIBERS." WHERE userFrom = '$username'");
             $resultfollowing = $con->query($following); 
             $followingData = array();
@@ -42,10 +56,24 @@ if(isset($_GET["show"])){
                 array_push($followingData, $row);
             }
 
+
+            for ($i = 0; $i < count($followingData); $i++) {
+
+                // SELECT * FROM recipes INNER JOIN users WHERE recipes.uploadedBy = 'meynard' AND users.username = 'meynard';
+                $queryFollowing = "SELECT * FROM ".TBL_USERS." WHERE username = '". $followingData[$i]['userTo']."'";
+                $queryFollowingData = $con->query($queryFollowing); 
+                while ($row = $queryFollowingData->fetch_assoc()){
+                    $followingData[$i]['profilePic'] = $row['profilePic'];
+                    $followingData[$i]['uid'] = $row['uid'];
+                }
+          
+            }
+
+
             $data[0]['following'] = $followingData;
 
 
-
+            ///posted recipes
             $recipePosted = "SELECT * FROM ".TBL_RECIPES." WHERE uploadedBy = '$username'";
             $resultrecipePosted = $con->query($recipePosted); 
             $recipePostedData = array();
@@ -61,7 +89,28 @@ if(isset($_GET["show"])){
             }
 
             $data[0]['recipePostedData'] = $recipePostedData;
+            
+            
+            ///favorite recipes
+            // SELECT * FROM `favorites` INNER JOIN recipes WHERE favorites.username =
+            // 'meynard' and favorites.recipeId = recipes.id;
+            $recipeFavorite = "SELECT * FROM ".TBL_FAVORITES." INNER JOIN ".TBL_RECIPES." WHERE ".TBL_FAVORITES.".username
+            = '$username' AND ".TBL_FAVORITES.".recipeId = ".TBL_RECIPES.".id";
+            $resultrecipeFavorite = $con->query($recipeFavorite); 
+            $recipeFavoriteData = array();
 
+            while ($row = $resultrecipeFavorite->fetch_assoc()){
+                array_push($recipeFavoriteData, $row);
+            }
+
+
+            for($i = 0; $i < count($recipeFavoriteData); $i++){
+                $change = $recipeFavoriteData[$i]['uploadDate'];
+                $recipeFavoriteData[$i]['formattedDate'] = date("M j, Y", strtotime($change));
+            }
+
+            $data[0]['recipeFavoriteData'] = $recipeFavoriteData;
+            
 
 
 

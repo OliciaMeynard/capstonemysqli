@@ -4,6 +4,7 @@ import * as footer from '../../js/createFooter.js'
 import displayRecipes from './displayRecipes.js'
 import paginate from './paginate.js'
 import displayButtons from './displayButtons.js'
+
 // import * as checkLoggedIn from '../../js/checkLoggedIn.js'
 
 
@@ -15,6 +16,7 @@ footer.createFooter('../../assets/imgs/logo.png');
 let containerCards = document.getElementById('containerCards')
 let categoryBtnContainer= document.querySelector('.categories')
 const btnContainer = document.querySelector('.btnContainer')
+const swiperWrapper = document.querySelector('.swiper-wrapper')
 export const divSpinner = document.querySelector('.divSpinner')
 
 let index = 0
@@ -48,14 +50,27 @@ let categories = [
     },
 ]
 
-categories.map((category)=>{
-    let btn = category.id
-     btn = document.createElement('button')
-    btn.textContent = category.name
-    btn.classList.add('categoryBtn')
-    btn.addEventListener('click', ()=> getRecipeByCategory(category.id))
-    categoryBtnContainer.append(btn)
+// categories.map((category)=>{
+//     let btn = category.id
+//      btn = document.createElement('button')
+//     btn.textContent = category.name
+//     btn.classList.add('categoryBtn')
+//     btn.addEventListener('click', ()=> getRecipeByCategory(category.id))
+//     categoryBtnContainer.append(btn)
+//   })
+  
+  categories.map((swipe)=>{
+  let btn = swipe.id
+   btn = document.createElement('button')
+  btn.textContent = swipe.name
+  btn.classList.add('categoryBtn', 'swiper-slide')
+  btn.addEventListener('click', ()=> getRecipeByCategory(swipe.id))
+  swiperWrapper.append(btn)
+
 })
+
+
+
 
 
 export let searchParam = ''

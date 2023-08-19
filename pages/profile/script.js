@@ -15,10 +15,12 @@ export let idUrl = ''
 
 
 const recipePostSection = document.querySelector('.recipePostSection')
+const recipeFavoriteDiv = document.querySelector('.recipeFavoriteDiv')
 const ctaProfilePage = document.querySelector('.ctaProfilePage')
 const ctaProfileEmail = document.querySelector('.ctaProfileEmail')
 const divSpinner = document.querySelector('.divSpinner')
-
+const containerFollowersUl = document.querySelector('.containerFollowersUl')
+const containerFollowingUl = document.querySelector('.containerFollowingUl')
 
 
 
@@ -64,71 +66,59 @@ function show(idRequest){
             $('#followingProfilePage').text(data.following.length)
             data.profilePic === null ?  $('.profilePicProfilePage').attr('src', '../../uploads/profpic/default.webp' ) : $('.profilePicProfilePage').attr('src', '../../uploads/profpic/'+data.profilePic );
             // $('.profilePicProfilePage').attr('src', '../../uploads/profpic/'+data.profilePic )
-            $('#firstLastNameProfilepage').text(`Name: ${data.firstName} ${data.lastName}`)
+            $('#firstLastNameProfilepage').text(`${data.firstName} ${data.lastName}`)
             $('#usernameProfilePage').text(`Username: ${data.username}`)
-            $('#emailProfilePage').text(`Email: ${data.email}`)
+            $('#emailProfilePage').text(`Member since: ${data.formattedDateSignUp}`)
             ctaProfileEmail.href = `../../pages/sendemailprofile/index.html?uid=${data.uid}`
+
+
+             ///////followers
+             /////display followers
+             const followersHtml = data.followers.map((follower)=>{
+                return `
+                <li class="singleFollower">
+                <a href="../../pages/profile/index.html?uid=${follower.uid}">
+                  <img src="${follower.profilePic === null ? '../../uploads/profpic/default.webp' : `../../uploads/profpic/${follower.profilePic}`}" alt="" class="followerImg">
+                  <h5>${follower.userFrom}</h5>
+                </a>
+  
+              </li>
+                
+                `
+            }).join('')
+
+            containerFollowersUl.innerHTML = followersHtml
+                ///////followers
+
+
+             ///////following
+             /////display following
+             const followingHtml = data.following.map((follower)=>{
+                return `
+                <li class="singleFollower">
+                <a href="../../pages/profile/index.html?uid=${follower.uid}">
+                  <img src="${follower.profilePic === null ? '../../uploads/profpic/default.webp' : `../../uploads/profpic/${follower.profilePic}`}" alt="" class="followerImg">
+                  <h5>${follower.userFrom}</h5>
+                </a>
+  
+              </li>
+                
+                `
+            }).join('')
+
+            containerFollowingUl.innerHTML = followingHtml
+                ///////following
 
 
             
             if( data.recipePostedData.length > 0){
+                cardRecipes(data.recipePostedData, recipePostSection, data.userLoggedInData[0].username, data.username )
                  ////////////////////LONG CODE FOR RECIPE POSTED
+             }
 
-                 data.recipePostedData.map((recipe)=>{
-    
-                    const card = document.createElement('div')
-                    card.classList.add("card", "col-xs-4")
-                    card.style["max-width"] = "35rem"
-                    
-    
-                    const recipeImg = document.createElement('img')
-                    recipeImg.classList.add('card-img-top' , 'card-img-post')
-                    recipeImg.setAttribute('src', '../../uploads/recipeImgs/'+recipe.filePath)
-                    card.append(recipeImg)
-    
-                    const cardBody = document.createElement('div')
-                    cardBody.classList.add('card-body')
-                    card.append(cardBody)
-    
-                    const title = document.createElement('h2')
-                    title.classList.add('card-title', 'mb3')
-                    title.innerText = recipe.title
-                    const infoDiv = document.createElement('a')
-                    infoDiv.classList.add('infoDiv')
-    
-                    const span1 = document.createElement('span')
-                    span1.innerHTML = `<ion-icon name="eye-outline"></ion-icon> ${recipe.views} `
-                    const span2 = document.createElement('span')
-                    span2.innerHTML = `<ion-icon name="heart-outline"></ion-icon> `
-                    const span3 = document.createElement('span')
-                    span3.classList.add('text-muted', 'mb-1')
-                    span3.innerHTML = `<ion-icon name="calendar-outline"></ion-icon> ${recipe.formattedDate}`
-                    infoDiv.setAttribute('href', '../../pages/recipe/index.html?q='+recipe.id)
-    
-    
-                    infoDiv.append(span1,  span3)
-                    cardBody.append(title, infoDiv)
-    
-                    const actionBtns = document.createElement('div')
-                    actionBtns.classList.add('actionBtns')
-                    const actionEdit = document.createElement('a')
-                    actionEdit.setAttribute('href', `../../pages/editrecipe/index.html?q=${recipe.id}`)
-                    actionEdit.classList.add("actionBtn", "actionEditBtnProfile")
-                    actionEdit.innerHTML = `<ion-icon name="create-outline"></ion-icon>`
-                    const actionDelete = document.createElement('p')
-                    actionDelete.classList.add("actionBtn", "actionDeleteBtnProfile")
-                    actionDelete.innerHTML = `<ion-icon name="trash-outline"></ion-icon>`
-                    actionDelete.addEventListener('click',()=> destroy(recipe.id))
-    
-                    actionBtns.append(actionEdit, actionDelete)
-                    card.append(actionBtns)
-    
-                    recipePostSection.append(card)
-    
-                    if(data.userLoggedInData[0].username != data.username || data.username === undefined){
-                        actionBtns.style.display = 'none'
-                    }
-                })
+            if( data.recipeFavoriteData.length > 0){
+                cardRecipes(data.recipeFavoriteData, recipeFavoriteDiv, data.userLoggedInData[0].username, data.username )
+                 ////////////////////LONG CODE FOR RECIPE POSTED
              }
 
 
@@ -170,6 +160,9 @@ function show(idRequest){
             }
 
 
+
+
+
            
 
             divSpinner.style.display = 'none'
@@ -182,6 +175,80 @@ function show(idRequest){
     });
 
 }
+
+
+
+
+/////////////////////////////cards for populate
+function cardRecipes (recipes, containerCards, userlogUsername, username){
+    recipes.map((recipe)=>{
+    
+        const card = document.createElement('div')
+        card.classList.add("card", "col-xs-4")
+        card.style["max-width"] = "35rem"
+        
+
+        const recipeImg = document.createElement('img')
+        recipeImg.classList.add('card-img-top' , 'card-img-post')
+        recipeImg.setAttribute('src', '../../uploads/recipeImgs/'+recipe.filePath)
+        card.append(recipeImg)
+
+        const cardBody = document.createElement('div')
+        cardBody.classList.add('card-body')
+        card.append(cardBody)
+
+        const title = document.createElement('h2')
+        title.classList.add('card-title', 'mb3')
+        title.innerText = recipe.title
+        const infoDiv = document.createElement('a')
+        infoDiv.classList.add('infoDiv')
+
+        const span1 = document.createElement('span')
+        span1.innerHTML = `<ion-icon name="eye-outline"></ion-icon> ${recipe.views} `
+        const span2 = document.createElement('span')
+        span2.innerHTML = `<ion-icon name="heart-outline"></ion-icon> `
+        const span3 = document.createElement('span')
+        span3.classList.add('text-muted', 'mb-1')
+        span3.innerHTML = `<ion-icon name="calendar-outline"></ion-icon> ${recipe.formattedDate}`
+        infoDiv.setAttribute('href', '../../pages/recipe/index.html?q='+recipe.id)
+
+
+        infoDiv.append(span1,  span3)
+        cardBody.append(title, infoDiv)
+
+        if(containerCards.classList.contains('recipeFavoriteDiv') ){
+            containerCards.append(card)
+            return;
+        }
+       
+
+            const actionBtns = document.createElement('div')
+            actionBtns.classList.add('actionBtns')
+            const actionEdit = document.createElement('a')
+            actionEdit.setAttribute('href', `../../pages/editrecipe/index.html?q=${recipe.id}`)
+            actionEdit.classList.add("actionBtn", "actionEditBtnProfile")
+            actionEdit.innerHTML = `<ion-icon name="create-outline"></ion-icon>`
+            const actionDelete = document.createElement('p')
+            actionDelete.classList.add("actionBtn", "actionDeleteBtnProfile")
+            actionDelete.innerHTML = `<ion-icon name="trash-outline"></ion-icon>`
+            actionDelete.addEventListener('click',()=> destroy(recipe.id))
+    
+            actionBtns.append(actionEdit, actionDelete)
+            card.append(actionBtns)
+    
+            containerCards.append(card)
+        
+
+        if(userlogUsername != username || username === undefined){
+            actionBtns.style.display = 'none'
+        }
+
+
+    })
+}
+
+
+
 
 show(idUrl)
 

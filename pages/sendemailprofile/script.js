@@ -15,6 +15,7 @@ const subject = document.getElementById('subject')
 const send_button = document.getElementById('send_button')
 const emailSendto = document.getElementById('emailSendto')
 
+
 console.log('login')
 
 
@@ -44,6 +45,7 @@ let loggeduserName;
 
 
 
+
 function show(idRequest){
 
     $.ajax({
@@ -57,8 +59,10 @@ function show(idRequest){
             let parseResponse = JSON.parse(response);
             let data = parseResponse.data
             profileEmailPic.src = "../../uploads/profpic/"+data.profilePic
-            profileEmailname.textContent = `Send message to ${data.firstName + ' ' + data.lastName}`
-            emailSendto.value = parseResponse.data.email
+            profileEmailname.textContent = `${data.firstName + ' ' + data.lastName}`
+            emailSendto.value = data.email
+
+            // console.log(data.email)
 
 
 
@@ -66,7 +70,7 @@ function show(idRequest){
             loggeduserName = data.userLoggedInData[0].username
 
             console.log(parseResponse)
-            $('#formMessage').trigger('reset')
+     
             divSpinner.style.display = 'none'
 
 
@@ -79,23 +83,31 @@ function show(idRequest){
 
 }
 
-show(idUrl)
+window.addEventListener('load', show(idUrl))
 
 
 
-send_button.addEventListener('click',(e)=>{
+
+
+
+
+send_button.addEventListener('click', (e)=>{
     e.preventDefault()
+    sendMail()
+})
 
+
+
+function sendMail (){
     let formData = {
         'name' : name.value,
         'email' : email.value,
         'subject' : subject.value,
         'message' : message.value,
-        'emailSendto' : emailSendto.value
+        'emailSendto' : $('#emailSendto').val()
     }
-        // console.log(formData)
-
-        $.ajax({
+        console.log(formData)
+                $.ajax({
             "url" : Routes.sendmailprofile, //URL of the API
             "type" : "POST", //GET and POST 
             "data" : "email=" + JSON.stringify(formData), //auth will be our php variable $_POST['auth']
@@ -108,16 +120,13 @@ send_button.addEventListener('click',(e)=>{
                 console.log(parseResponse)
                 divSpinner.style.display = 'none'
                 $('#myToast').show()
+                $('#formMessage').trigger('reset')
             },
             "error" : function (xhr, status, error) { //error yung response
                 alert("Error")
             }
         })
-
-
-
-
-})
+}
 
 
 nav.createNav("../../assets/imgs/logo.png", '../../api/logout.php', '../../api/checkIfLoggedIn.php', '../../index.html','../../pages/upload' ,'../../pages/login', '../../pages/allrecipes', '../../pages/allrecipes/index.html?search', '../../pages/profile','../../uploads/profpic/')

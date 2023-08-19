@@ -196,8 +196,9 @@ export function fetchAllComments(){
     });
 
 }
+window.addEventListener('load', fetchAllComments)
 
-fetchAllComments()
+
 
 // nav.createNav (imgSrcLogo, apiLogout, apiCheckLogIn, homeLink,  shareRecipeLink, loginLink, allrecipelink)
 
@@ -243,6 +244,10 @@ export function displayComment(comment, loggedUser,  uploadedBy){
 
 
     if(loggedUser === null){
+        return commentsContainer.append(singleCommentDiv)
+
+    }
+    else if(loggedUser === undefined && uploadedBy === undefine){
         return commentsContainer.append(singleCommentDiv)
 
     }

@@ -42,7 +42,7 @@
         <form class="column" id="formMessage">
             <img src="../../uploads/profpic/default.webp" alt="" class="profileEmailPic mb-4">
             <div class="mb-5">
-
+                <p>Send message to:</p>
                 <h2 class="profileEmailname "> Username</h2>
             </div>
             <div class='mb-3 mt-6'>
@@ -61,10 +61,11 @@
                 <label for="exampleInputEmail1 mb-3">Message</label>
                 <textarea rows='3' placeholder='Message' class='form-control textareaForm' id="message" name='message' ></textarea>
             </div>
-            <div class='mb-3' style="display: none;">
+            <div class='mb-3' style="display: none;" >
                 <label for="exampleInputEmail1 mb-3">Email to send</label>
-                 <input type='email' class='form-control' id="emailSendto" name='emailSendto' placeholder='Email' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-sm' required>
+                 <input type='email' value=""  class='form-control' id="emailSendto" name='emailSendto'>
             </div>
+       
             <input type='submit' class='btn-sendmail' name='sendButton' id="send_button" value="Send"/>
         </form>
 

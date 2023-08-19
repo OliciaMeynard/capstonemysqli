@@ -140,18 +140,24 @@
     background: rgb(63, 0, 0);
     color: white;
 } */
-
-.recipePostSection{
+.recipesPostedDiv, .sectionFollowers, .recipesFavoriteDiv{
+    margin: 6rem 0;
     max-width: 120rem;
-    margin: 0 auto;
-    border-radius: 1rem;
-    overflow: hidden;
-    margin-top: 4rem;
-    gap: 1rem;
-    justify-content: center;
     background:  white;
     border-radius: 1.5rem;
     padding: 2rem;
+    overflow: hidden;
+    margin: 5rem auto;
+}
+
+
+.recipePostSection, .recipeFavoriteDiv{
+    width: 100%;
+    margin: 0 auto;
+    border-radius: 1rem;
+    gap: 1rem;
+    justify-content: center;
+   
 }
 
 .recipeImgDiv{
@@ -191,10 +197,10 @@
     cursor: pointer;
 }
 
-.headerPosted{
+.headerPosted, .headerFavorite{
     width: 100%;
     text-align: center;
-    padding-top: 7rem;
+    margin-bottom: 2rem;
 }
 
 main{
@@ -205,5 +211,273 @@ main{
     border: none;
 }
 
+
+.containerFollowersUl, .containerFollowingUl{
+    max-width: 100rem;
+    margin: 0 auto;
+    display: flex;
+    overflow-x: auto;
+    gap: 3rem;
+    scrollbar-width: 10px;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: inline mandatory;
+    scroll-padding-inline: 1rem;
+    padding-bottom: 3rem;
+    
+}
+
+
+
+ul::-webkit-scrollbar {
+    width: 8px;               /* width of the entire scrollbar */
+  }
+
+
+
+.singleFollower{
+    max-width: 15rem;
+    max-height: 15rem;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.followerImg{
+    width: 10rem;
+    height: 10rem;
+    object-fit: cover;
+    border-radius: 100rem;
+    border: 4px solid #dcdcdc;
+}
+
+.singleFollower h5{
+    text-align: center;
+    color: rgb(98, 98, 98);
+}
+
+
+.grid-4-cols{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 2rem;
+}
+
+
+
+
+
+
+  
+@media (min-width: 200px) {
+  
+    #containerCards{
+     
+        grid-template-columns: 1fr;
+  
+    }
+    .categories{
+ 
+        grid-template-columns: 1fr 1fr;
+
+    }
+    
+
+  
+  }
+   @media (min-width: 400px) {
+  
+    #containerCards{
+     
+        grid-template-columns: 1fr;
+  
+    }
+
+    .categories{
+ 
+        grid-template-columns: 1fr 1fr 1fr;
+
+    }
+    
+
+  
+  }
+   @media (min-width: 650px) {
+  
+  
+    #containerCards{
+     
+        grid-template-columns: 1fr 1fr;
+  
+    }
+    .categories{
+ 
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+
+    }
+    
+  
+  }
+  
+  
+  
+  
+  
+
+  
+  @media (min-width: 800px) {
+  
+
+
+    #containerCards{
+     
+        grid-template-columns: 1fr 1fr 1fr;
+  
+    }
+
+    
+    
+
+  
+  }
+  
+  
+  
+  
+  
+
+  @media (min-width: 992px) {
+  
+
+    #containerCards{
+     
+        grid-template-columns: 1fr 1fr 1fr;
+  
+    }
+    .categories{
+ 
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+
+    }
+
+    
+
+  
+  }
+  
+  
+  
+  
+  
+  
+  @media (min-width: 1200px) {
+  
+    #containerCards{
+     
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+  
+    }
+    
+  
+    }
+
+    .controls-item {
+        display: inline-block;
+    }
+  
+
+    #pagination-wrapper{
+        display: flex;
+        gap: 2rem;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .container-pagination{
+        margin-top: 7rem;
+        width: 100%;
+        
+    }
+
+    .btn-page{
+        background: black;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+    }
+  
+
+
+
+
+
+@media screen and (min-width: 576px) {
+  .container {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}
+
+
+.container-pagination{
+    margin-bottom: 8rem;
+}
+
+.btnContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2rem;
+}
+.page-btn {
+  width: 3.5rem;
+  height: 3.5rem;
+  background: white;
+  border-color: transparent;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0.5rem;
+  transition: var(--transition);
+  color: black;
+  padding: 0.5rem;
+  font-size: 1.6rem;
+}
+.active-btn {
+  background: black;
+  color: white;
+}
+.prev-btn,
+.next-btn {
+  background: transparent;
+  border-color: transparent;
+  font-weight: bold;
+  text-transform: capitalize;
+  letter-spacing: var(--spacing);
+  margin: 0.5rem;
+  font-size: 1.2em;
+  cursor: pointer;
+  background: black;
+  color: white;
+  padding: 0.4rem 1.4rem;
+  border-radius: 4rem;
+}
+
+@media screen and (min-width: 775px) {
+  .btnContainer {
+    margin: 0 auto;
+    max-width: 700px;
+  }
+}
+
+.pageNumsInput{
+    height: 3rem;
+    width: 8rem;
+    background: black;
+    color: white;
+}
+
+h4{
+    margin-bottom: 0;
+}
 
 
