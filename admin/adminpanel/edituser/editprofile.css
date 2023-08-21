@@ -19,3 +19,8 @@
     right: 2rem;
     z-index: 10;
 }
+
+.btn{
+    padding: 0;
+    font-size: 2rem;
+}

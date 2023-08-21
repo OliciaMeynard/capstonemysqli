@@ -5,22 +5,22 @@ let usersTable;
 const sectionRecipes = document.querySelector('.sectionRecipes')
 
 
-function fetchAllRecipes() {
-    $.ajax({
-        "url" : '../../api/adminallrecipes.php', 
-        "type" : "POST", 
-        "data" : "getRecipes", 
+// function fetchAllRecipes() {
+//     $.ajax({
+//         "url" : '../../api/adminallrecipes.php', 
+//         "type" : "POST", 
+//         "data" : "getRecipes", 
 
-        "success" : function (response) { //success yung response
-            parseResponse = JSON.parse(response)
-            console.log(parseResponse)
-            $("#total_users").text(parseResponse.data)
-        },
-        "error" : function (xhr, status, error) { //error yung response
-            alert("Error")
-        }
-    });
-}
+//         "success" : function (response) { //success yung response
+//             parseResponse = JSON.parse(response)
+//             console.log(parseResponse)
+//             $("#total_users").text(parseResponse.data)
+//         },
+//         "error" : function (xhr, status, error) { //error yung response
+//             alert("Error")
+//         }
+//     });
+// }
 
 
 function dashboard() {
@@ -32,13 +32,36 @@ function dashboard() {
         "success" : function (response) { //success yung response
             parseResponse = JSON.parse(response)
             console.log(parseResponse)
-            $("#total_users").text(parseResponse.data)
+            $('.recipeContainerCard').text(parseResponse.data.allrecipes)
+            $('.viewsContainerCard').text(parseResponse.data.sumviews)
+            $('.usersContainerCard').text(parseResponse.data.allusers)
+            $('.commentContainerCard').text(parseResponse.data.allComments)
         },
         "error" : function (xhr, status, error) { //error yung response
             alert("Error")
         }
     });
 }
+
+
+// allcommentsTest()
+
+// function allcommentsTest() {
+//     $.ajax({
+//         "url" : '../../api/adminallcomments.php', 
+//         "type" : "GET", 
+//         "data" : "allcomments", 
+
+//         "success" : function (response) { //success yung response
+//             parseResponse = JSON.parse(response)
+//             console.log(parseResponse)
+
+//         },
+//         "error" : function (xhr, status, error) { //error yung response
+//             alert("Error")
+//         }
+//     });
+// }
 
 
 /////////USERS fetch
@@ -115,9 +138,11 @@ function fetchUsers() {
 
 
 
+fetchRecipes()
+
 function fetchRecipes() {
 
-    sectionRecipes.style.display = 'block'
+
     
     usersTable = $("#reciperecords").DataTable({
         processing : true,
@@ -151,7 +176,7 @@ function fetchRecipes() {
                 //@TODO
                 //@var change databale 
                 $('#reciperecords').on('dblclick', 'td', function() {
-                    let data = $('#userrecords')
+                    let data = $('#reciperecords')
                         .DataTable()
                         .row(this)
                         .data()
@@ -181,6 +206,78 @@ function fetchRecipes() {
         // ]
     });
 }
+
+
+
+//////////////////////FETCH COMMENTS
+
+fetchComments()
+
+function fetchComments() {
+
+
+    
+    usersTable = $("#commentsrecords").DataTable({
+        processing : true,
+        responsive: true,
+        ajax : {
+            url : '../../api/adminallcomments.php' + "?allcomments",
+            dataSrc : function (response) {
+                console.log(response)
+                let return_data = new Array();
+
+                for (let i = 0; i<response.data.length; i++) 
+                {
+                    let id = response.data[i].id
+                    return_data.push({
+                        //@TODO
+                        //@var change keys depending on the table
+                        // id : response.data[i].id,
+                        profilePic :  `<img src="../../uploads/profpic/${response.data[i].profilePic === null ? 'default.webp' : response.data[i].profilePic}" alt="" class="userimage">`,
+                        postedBy :  response.data[i].username,
+                        body :  response.data[i].body,
+                        datePosted :  response.data[i].formattedDate,
+                        action : " <button class='btn btn-dark' onclick='destroyComment(" + id + ")'><ion-icon name='trash-outline'></ion-icon></button></td>"
+                    });
+                }
+
+                return return_data;
+            },
+            complete : function() {
+                //@TODO
+                //@var change databale 
+                $('#commentsrecords').on('dblclick', 'td', function() {
+                    let data = $('#commentsrecords')
+                        .DataTable()
+                        .row(this)
+                        .data()
+                    alert(data.id)
+  
+                });
+            },
+        },
+        columns : [
+
+
+            { data : 'profilePic' },
+            { data : 'postedBy' },
+            { data : 'body' },
+            { data : 'datePosted' },
+            { data : 'action' },
+        ],
+        // dom : 'lBfrtip',
+        // buttons : [
+        //     'copyHtml5',
+        //     'excelHtml5',
+        //     'csvHtml5',
+        //     'print',
+        //     'pdf'
+        // ]
+    });
+}
+
+
+
 
 
 function viewUser(id){
@@ -230,6 +327,33 @@ function destroyRecipe(id){
     if(window.confirm("Do you want to delete this Recipe?")){
         $.ajax({
             "url" : '../../api/profile.php', 
+            "type" : "POST", 
+             "data" : "destroy=" + JSON.stringify(id), 
+    
+            "success" : function (response) { //success yung response
+                parseResponse = JSON.parse(response)
+                console.log(parseResponse)
+                if(parseResponse.status === 200){
+                    console.log('deleted')
+                    alert('Successfully Deleted')
+                    location.reload();
+                }
+            },
+            "error" : function (xhr, status, error) { //error yung response
+                alert("Error")
+            }
+        });
+
+    }
+
+
+}
+////////////////DELETE COMMENT
+function destroyComment(id){
+
+    if(window.confirm("Do you want to delete this Recipe?")){
+        $.ajax({
+            "url" : '../../api/comments.php', 
             "type" : "POST", 
              "data" : "destroy=" + JSON.stringify(id), 
     

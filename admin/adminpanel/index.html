@@ -10,35 +10,288 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.3.2/css/buttons.dataTables.min.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.dataTables.min.css" />
-
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
-    <!-- <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">CM</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="../dashboard/">Dashboard</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../users/">Users</a>
-                    </li>
-                </ul>
-                <form class="d-flex" role="search">
-                    <button class="btn btn-success" type="submit">Logout</button>
-                </form>
-            </div>
+
+<main>
+
+        <!-- CODE TO TRY -->
+         <!-- =============== Navigation ================ -->
+    <div class="container-main">
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="logo-apple"></ion-icon>
+                        </span>
+                        <span class="title">Recipe Share</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="grid-outline"></ion-icon>
+                        </span>
+                        <span class="title">Dashboard</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#users">
+                        <span class="icon">
+                            <ion-icon name="people-outline"></ion-icon>
+                        </span>
+                        <span class="title">Users</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#recipes">
+                        <span class="icon">
+                            <ion-icon name="fast-food-outline"></ion-icon>
+                        </span>
+                        <span class="title">Recipes</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#comments">
+                        <span class="icon">
+                            <ion-icon name="chatbox-ellipses-outline"></ion-icon>
+                        </span>
+                        <span class="title">Comments</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="chatbubble-outline"></ion-icon>
+                        </span>
+                        <span class="title">Messages</span>
+                    </a>
+                </li>
+
+                <!-- <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="help-outline"></ion-icon>
+                        </span>
+                        <span class="title">Help</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="settings-outline"></ion-icon>
+                        </span>
+                        <span class="title">Settings</span>
+                    </a>
+                </li> -->
+
+                <!-- <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="lock-closed-outline"></ion-icon>
+                        </span>
+                        <span class="title">Password</span>
+                    </a>
+                </li> -->
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="log-out-outline"></ion-icon>
+                        </span>
+                        <span class="title">Sign Out</span>
+                    </a>
+                </li>
+            </ul>
         </div>
-    </nav> -->
-    <main>
-    <section class="sectionUsers container">
+
+        <!-- ========================= Main ==================== -->
+        <div class="main">
+            <div class="topbar">
+                <div class="toggle">
+                    <ion-icon name="menu-outline"></ion-icon>
+                </div>
+
+
+
+                <div class="user">
+                    <img src="../../uploads/adminPic/adminpic.png" alt="">
+                </div>
+            </div>
+
+            <!-- ======================= Cards ================== -->
+            <div class="cardBox">
+
+                <div class="card">
+                    <div>
+                        <div class="numbers recipeContainerCard">0</div>
+                        <div class="cardName">Posted Recipes</div>
+                    </div>
+
+                    <div class="iconBx">
+                        <ion-icon name="fast-food-outline"></ion-icon>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div class="numbers viewsContainerCard">0</div>
+                        <div class="cardName">Total Views</div>
+                    </div>
+
+                    <div class="iconBx">
+                        <ion-icon name="eye-outline"></ion-icon>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div class="numbers usersContainerCard">0</div>
+                        <div class="cardName">Registered Users</div>
+                    </div>
+
+                    <div class="iconBx">
+                        <ion-icon name="people-circle-outline"></ion-icon>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div class="numbers commentContainerCard">0</div>
+                        <div class="cardName">Comments</div>
+                    </div>
+
+                    <div class="iconBx">
+                        <ion-icon name="chatbubbles-outline"></ion-icon>
+                    </div>
+                </div>
+
+    
+            </div>
+
+            <!-- ================ USERS Details List ================= -->
+            <div class="containerPortion">
+               
+                    <!-- ================ USERS CODE ================= -->
+                    <section class="sectionUsers container" id="users">
+                        <h2 class="ms-2 section-header">Users Management</h2>
+                
+                        <div class="container containerusers">
+                            <table class="table table-striped display dataTable" id="userrecords"  width='100%'>
+                                <thead>
+                                    <tr scope="col">
+                
+                
+                
+                
+                
+                               
+                                        <th scope="col">Img</th>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th scope="col">Username</th>
+                                        <th>Followers</th>
+                                        <th>Following</th>
+                                        <th>Recipes</th>
+                               
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                
+                                <tbody id="content"></tbody>
+                            </table>
+                        </div>
+                        
+                    </section>
+
+            </div>
+
+            <!-- ================ RECIPES Details List ================= -->
+            <div class="containerPortion">
+              
+                    <!-- ================ RECIPES CODE ================= -->
+                    <section class="sectionRecipes " id="recipes">
+                        <h2 class="ms-2 section-header">Recipes Management</h2>
+                
+                        <div class="container">
+                            <table class="table table-striped display dataTable" id="reciperecords"  width='100%'>
+                                <thead>
+                                    <tr scope="col">
+                
+                
+                               
+                                        <th >Img</th>
+                                        <th >Title</th>
+                                        <th >Favorites</th>
+                                        <th >Views</th>
+                                        <th >Comments</th>
+                                        <th >Category</th>
+                                        <th >Action</th>
+                
+                                    </tr>
+                                </thead>
+                
+                                <tbody id="content"></tbody>
+                            </table>
+                        </div>
+                        
+                    </section>
+
+            </div>
+
+
+            <!-- ================ COMMENTS Details List ================= -->
+            <div class="containerPortion">
+              
+                    <!-- ================ RECIPES CODE ================= -->
+                    <section class="sectionComments " id="comments">
+                        <h2 class="ms-2 section-header">Comments Management</h2>
+                
+                        <div class="container">
+                            <table class="table table-striped display dataTable" id="commentsrecords"  width='100%'>
+                                <thead>
+                                    <tr scope="col">
+                
+                                        
+                                        
+                               
+                                        <th >Img</th>
+                                        <th >Posted By</th>
+                                        <th >Body</th>
+                                        <th >Date Posted</th>
+                                        <th >Action</th>
+                          
+                
+                                    </tr>
+                                </thead>
+                
+                                <tbody id="content"></tbody>
+                            </table>
+                        </div>
+                        
+                    </section>
+
+            </div>
+        
+
+
+        </div>
+
+
+
+  
+        <!-- CODE TO TRY -->
+
+
+
+    <!-- <section class="sectionUsers container">
         <h2 class="ms-2 section-header">Users Management</h2>
 
         <div class="container containerusers">
@@ -50,7 +303,7 @@
 
 
 
-                        <!-- <th>ID</th> -->
+               
                         <th scope="col">Img</th>
                         <th>First Name</th>
                         <th>Last Name</th>
@@ -58,8 +311,7 @@
                         <th>Followers</th>
                         <th>Following</th>
                         <th>Recipes</th>
-                        <!-- <th>Username</th>
-                        <th>Created At</th>-->
+               
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -68,39 +320,13 @@
             </table>
         </div>
         
-    </section>
+    </section> -->
 
 
 
     <!-- RECIPES -->
 
-    <section class="sectionRecipes container">
-        <h2 class="ms-2 section-header">Recipes Management</h2>
-
-        <div class="container">
-            <table class="table table-striped display dataTable" id="reciperecords"  width='100%'>
-                <thead>
-                    <tr scope="col">
-
-
-               
-                        <th >Img</th>
-                        <th >Title</th>
-                        <th >Favorites</th>
-                        <th >Views</th>
-                        <th >Comments</th>
-                        <th >Category</th>
-                        <th >Action</th>
-
-                    </tr>
-                </thead>
-
-                <tbody id="content"></tbody>
-            </table>
-        </div>
-        
-    </section>
-
+   
 
 
 
@@ -128,6 +354,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.blockUI/2.70/jquery.blockUI.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.blockUI/2.70/jquery.blockUI.js"></script>
     
+
+        <!-- =========== Scripts =========  -->
+        <script src="assets/js/main.js"></script>
 
     <!--Please change your page name-->
     <script src="script.js"></script>
