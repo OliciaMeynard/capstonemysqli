@@ -36,4 +36,26 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control:before, table.dataT
     text-transform: uppercase;
 }
 
+#signoutbtn a{
+    color: white;
+    cursor: pointer;
+}
+#signoutbtn:hover a{
+    color: black;
+}
+/* .signoutAdminspan{
+    color: white;
+}
 
+#signoutAdmin{
+    color: white;
+}
+
+li a .signoutAdminspan:hover, li a #signoutAdmin:hover{
+    color: black;
+}
+
+.navigation ul li.hovered #signoutbtn:hover a{
+    color: black;
+    
+} */

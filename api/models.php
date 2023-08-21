@@ -6,3 +6,4 @@ define('TBL_THUMBNAILS', 'thumbnails');
 define('TBL_FAVORITES', 'favorites');
 define('TBL_SUBSCRIBERS', 'subscribers');
 define('TBL_COMMENTS', 'comments');
+define('TBL_ADMIN', 'admin');

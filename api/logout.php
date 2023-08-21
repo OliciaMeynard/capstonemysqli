@@ -10,4 +10,12 @@ if(isset($_POST['LOGOUT'])){
 }
 
 
+if(isset($_POST['LOGOUTADMIN'])){
+    unset($_SESSION["adminLoggedIn"]);
+    $response = createResponse(200, 'logout', 'Successfully');
+    echo json_encode($response);
+
+}
+
+
 

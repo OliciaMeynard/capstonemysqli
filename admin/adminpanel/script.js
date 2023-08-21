@@ -1,8 +1,51 @@
 
-dashboard()
+
 
 let usersTable;
 const sectionRecipes = document.querySelector('.sectionRecipes')
+const signoutbtn = document.getElementById('signoutbtn')
+
+
+
+// "adminLoggedIn"
+
+// import * as Routes from './routes.js'
+
+
+function checkLoggedIn () {
+    $.ajax({
+        url : '../../api/adminCheckIfLoggedin.php', //URL of the API
+        type : "POST", //GET and POST 
+        success : function (response) { //success yung response
+            console.log(response)
+            const parseResponse = JSON.parse(response)       
+            if(parseResponse.status == 200){
+                dashboard()
+                fetchUsers()
+                fetchRecipes()
+                fetchComments()
+                
+            } else {
+                window.location.href = '../index.html'
+                
+            }
+           
+            // $("#total_users").text(parseResponse.data[0].total_users);
+
+        },
+        "error" : function (xhr, status, error) { //error yung response
+            console.log(parseResponse)
+        }
+    });
+
+    
+
+}
+
+checkLoggedIn ()
+
+
+
 
 
 // function fetchAllRecipes() {
@@ -66,7 +109,7 @@ function dashboard() {
 
 /////////USERS fetch
 
-fetchUsers()
+
 
 
 function fetchUsers() {
@@ -138,7 +181,7 @@ function fetchUsers() {
 
 
 
-fetchRecipes()
+
 
 function fetchRecipes() {
 
@@ -211,7 +254,7 @@ function fetchRecipes() {
 
 //////////////////////FETCH COMMENTS
 
-fetchComments()
+
 
 function fetchComments() {
 
@@ -375,3 +418,22 @@ function destroyComment(id){
 
 
 }
+
+
+
+
+//////////////////////////////////LOGOUT
+
+function logOut (){
+
+        $.post('../../api/logout.php', 'LOGOUTADMIN')
+        .done(function(data){
+            let parseResponse = JSON.parse(data);
+            console.log(parseResponse)
+            window.location.href = '../index.html'
+        });
+    
+
+}
+
+signoutbtn.addEventListener('click', logOut)

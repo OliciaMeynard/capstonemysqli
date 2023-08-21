@@ -485,3 +485,12 @@ ol, ul {
   margin: 5rem 1.5rem;
   padding: 2rem 1.5rem;
 }
+
+.navlogo{
+  height: 40px;
+}
+
+.logo-li, .navigation ul li a{
+  display: flex;
+  align-items: center;
+}

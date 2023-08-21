@@ -1,8 +1,7 @@
 .pageContainer{
     max-width: 80rem;
-    padding: 2rem;
     margin: 0 auto;
-    background: white;
+
 }
 
 .divRecipeImg{
@@ -47,8 +46,8 @@ p{
     margin-bottom: 3rem;
 }
 
-.howToCookSection{
-    margin: 5rem 0;
+.howToCookSection, .ingredientsSection{
+    margin: 7rem 0;
 }
 
 .ingredient{
@@ -80,4 +79,19 @@ p{
 .deleteCommentBtn{
 
     padding: 0.4rem;
+}
+
+.pageContainer{
+    background: none;
+}
+
+.pageContainer{
+   background: rgb(235, 235, 235);
+}
+
+.commentSection, .howToCookSection, .ingredientsSection, .recipeInfoDiv{
+    background: white;
+    padding: 2rem;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    border-radius: 1rem;
 }
