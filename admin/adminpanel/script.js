@@ -1,0 +1,253 @@
+
+dashboard()
+
+let usersTable;
+const sectionRecipes = document.querySelector('.sectionRecipes')
+
+
+function fetchAllRecipes() {
+    $.ajax({
+        "url" : '../../api/adminallrecipes.php', 
+        "type" : "POST", 
+        "data" : "getRecipes", 
+
+        "success" : function (response) { //success yung response
+            parseResponse = JSON.parse(response)
+            console.log(parseResponse)
+            $("#total_users").text(parseResponse.data)
+        },
+        "error" : function (xhr, status, error) { //error yung response
+            alert("Error")
+        }
+    });
+}
+
+
+function dashboard() {
+    $.ajax({
+        "url" : '../../api/admindashboard.php', 
+        "type" : "POST", 
+        "data" : "getDashboard", 
+
+        "success" : function (response) { //success yung response
+            parseResponse = JSON.parse(response)
+            console.log(parseResponse)
+            $("#total_users").text(parseResponse.data)
+        },
+        "error" : function (xhr, status, error) { //error yung response
+            alert("Error")
+        }
+    });
+}
+
+
+/////////USERS fetch
+
+fetchUsers()
+
+
+function fetchUsers() {
+    usersTable = $("#userrecords").DataTable({
+        processing : true,
+        responsive: true,
+        ajax : {
+            url : '../../api/adminallusers.php' + "?index",
+            dataSrc : function (response) {
+                console.log(response)
+                let return_data = new Array();
+
+                for (let i = 0; i<response.data.length; i++) 
+                {
+                    let id = response.data[i].uid
+                    return_data.push({
+                        //@TODO
+                        //@var change keys depending on the table
+                        // id : response.data[i].uid,
+                        profilePic :  `<img src="../../uploads/profpic/${response.data[i].profilePic === null ? 'default.webp' : response.data[i].profilePic}" alt="" class="userimage">`,
+                        firstName :  response.data[i].firstName,
+                        lastName :  response.data[i].lastName,
+                        username :  response.data[i].username,
+                        followers :  response.data[i].followers,
+                        recipePosted :  response.data[i].recipePosted,
+                        following :  response.data[i].following,
+                        action : "<button onclick='viewUser(" + id + ")' class='btn btn-secondary'><ion-icon name='create-outline'></ion-icon></button> <button class='btn btn-dark' onclick='destroyUser(" + id + ")'><ion-icon name='trash-outline'></ion-icon></button></td>"
+                    });
+                }
+
+                return return_data;
+            },
+            complete : function() {
+                //@TODO
+                //@var change databale 
+                $('#userrecords').on('dblclick', 'td', function() {
+                    let data = $('#userrecords')
+                        .DataTable()
+                        .row(this)
+                        .data()
+                    alert(data.uid)
+  
+                });
+            },
+        },
+        columns : [
+
+            // { data : 'id' },
+            { data : 'profilePic' },
+            { data : 'firstName' },
+            { data : 'lastName' },
+            { data : 'username' },
+            { data : 'followers' },
+            { data : 'following' },
+            { data : 'recipePosted' },
+            { data : 'action' },
+        ],
+        // dom : 'lBfrtip',
+        // buttons : [
+        //     'copyHtml5',
+        //     'excelHtml5',
+        //     'csvHtml5',
+        //     'print',
+        //     'pdf'
+        // ]
+    });
+}
+//////////////////////RECIPES fetch
+
+
+
+function fetchRecipes() {
+
+    sectionRecipes.style.display = 'block'
+    
+    usersTable = $("#reciperecords").DataTable({
+        processing : true,
+        responsive: true,
+        ajax : {
+            url : '../../api/adminallrecipes.php' + "?index",
+            dataSrc : function (response) {
+                console.log(response)
+                let return_data = new Array();
+
+                for (let i = 0; i<response.data.length; i++) 
+                {
+                    let id = response.data[i].id
+                    return_data.push({
+                        //@TODO
+                        //@var change keys depending on the table
+                        // id : response.data[i].id,
+                        filePath :  `<img src="../../uploads/recipeImgs/${response.data[i].filePath}" alt="" class="userimage">`,
+                        title :  response.data[i].title,
+                        numFavorites :  response.data[i].numFavorites,
+                        views :  response.data[i].views,
+                        allComments :  response.data[i].allComments,
+                        category :  response.data[i].category,
+                        action : "<button onclick='viewRecipe(" + id + ")' class='btn btn-secondary'><ion-icon name='create-outline'></ion-icon></button> <button class='btn btn-dark' onclick='destroyRecipe(" + id + ")'><ion-icon name='trash-outline'></ion-icon></button></td>"
+                    });
+                }
+
+                return return_data;
+            },
+            complete : function() {
+                //@TODO
+                //@var change databale 
+                $('#reciperecords').on('dblclick', 'td', function() {
+                    let data = $('#userrecords')
+                        .DataTable()
+                        .row(this)
+                        .data()
+                    alert(data.id)
+  
+                });
+            },
+        },
+        columns : [
+
+
+            { data : 'filePath' },
+            { data : 'title' },
+            { data : 'numFavorites' },
+            { data : 'views' },
+            { data : 'allComments' },
+            { data : 'category' },
+            { data : 'action' },
+        ],
+        // dom : 'lBfrtip',
+        // buttons : [
+        //     'copyHtml5',
+        //     'excelHtml5',
+        //     'csvHtml5',
+        //     'print',
+        //     'pdf'
+        // ]
+    });
+}
+
+
+function viewUser(id){
+    window.location.href = `./edituser/index.html?id=${id}`
+
+}
+function viewRecipe(id){
+    window.location.href = `./editrecipe/index.html?q=${id}`
+    
+
+}
+
+
+////////////////////////DELETE USER
+function destroyUser(id){
+
+    if(window.confirm("Do you want to delete this User?")){
+        $.ajax({
+            "url" : '../../api/admindashboard.php', 
+            "type" : "POST", 
+             "data" : "destroyUser=" + JSON.stringify(id), 
+    
+            "success" : function (response) { //success yung response
+                parseResponse = JSON.parse(response)
+                console.log(parseResponse)
+                if(parseResponse.status === 200){
+                    console.log('deleted')
+                    alert('Successfully Deleted')
+                    location.reload();
+                }
+            },
+            "error" : function (xhr, status, error) { //error yung response
+                alert("Error")
+            }
+        });
+
+    }
+
+
+}
+
+
+
+////////////////DELETE RECIPE
+function destroyRecipe(id){
+
+    if(window.confirm("Do you want to delete this Recipe?")){
+        $.ajax({
+            "url" : '../../api/profile.php', 
+            "type" : "POST", 
+             "data" : "destroy=" + JSON.stringify(id), 
+    
+            "success" : function (response) { //success yung response
+                parseResponse = JSON.parse(response)
+                console.log(parseResponse)
+                if(parseResponse.status === 200){
+                    console.log('deleted')
+                    alert('Successfully Deleted')
+                    location.reload();
+                }
+            },
+            "error" : function (xhr, status, error) { //error yung response
+                alert("Error")
+            }
+        });
+
+    }
+
+
+}

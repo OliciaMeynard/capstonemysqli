@@ -152,11 +152,11 @@ if(isset($_GET["show"])){
 
 
 
-
+//////////////////////DELETE RECIPE
 if(isset($_POST['destroy'])){
-    $userId = json_decode($_POST['destroy']);
+    $recipeId = json_decode($_POST['destroy']);
 
-    $query = ("DELETE FROM  ".TBL_RECIPES." WHERE id = '$userId' ");
+    $query = ("DELETE FROM  ".TBL_RECIPES." WHERE id = '$recipeId' ");
     $isDeleted = $con->query($query);   
 
 

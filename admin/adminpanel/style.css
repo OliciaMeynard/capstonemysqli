@@ -1,0 +1,42 @@
+main{
+    width: 100%;
+}
+
+.userimage{
+    height: 2.5rem;
+    width: 2.5rem;
+    object-fit: cover;
+    border-radius: 8rem;
+}
+
+.sectionUsers{
+    margin: 0 auto;
+    /* max-width: 30rem; */
+}
+
+.container{
+    max-width: 70rem;
+}
+#userrecords, #reciperecords{
+    padding-top: 2rem;
+}
+
+div.dt-buttons{
+    margin-left: 2rem;
+}
+
+
+table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control:before, table.dataTable.dtr-inline.collapsed>tbody>tr>th.dtr-control:before{
+   background-color: black; 
+}
+
+.section-header{
+    text-align: center;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+}
+
+
+.sectionRecipes{
+    display: none;
+}

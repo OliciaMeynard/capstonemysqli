@@ -1,6 +1,6 @@
-import * as nav from '../../js/nav.js'
-import * as footer from '../../js/createFooter.js'
-import * as Routes from '../../js/routes.js'
+
+
+
 
 const firstName = document.getElementById('firstName')
 const lastName = document.getElementById('lastName')
@@ -13,19 +13,21 @@ let statusMsg = document.querySelector('.statusMsg')
 
 // http://localhost/recipeClips(MP2)/pages/editprofile/indes.html?id=6
 
+const urlparams = new URLSearchParams(window.location.search)
+const idUrl = urlparams.get('id')
+console.log('idUrl', idUrl)
 
 
-nav.createNav("../../assets/imgs/logo.png", '../../api/logout.php', '../../api/checkIfLoggedIn.php', '../../index.html','../../pages/upload' ,'../../pages/login', '../../pages/allrecipes', '../../pages/allrecipes/index.html?search', '../../pages/profile','../../uploads/profpic/')
-footer.createFooter('../../assets/imgs/logo.png');
-
+getUser(idUrl)
 
 console.log('edit profile')
 
 
-export function getUserLoggedin() {
+export function getUser(id) {
     $.ajax({
-        url : '../../api/checkIfLoggedIn.php', //URL of the API
-        type : "POST", //GET and POST 
+        url : '../../../api/admingetuser.php', //URL of the API
+        type : "GET", //GET and POST 
+		data : "getUser=" + JSON.stringify(id), 
         success : function (response) { //success yung response
            
             let parseResponse = JSON.parse(response);
@@ -37,7 +39,7 @@ export function getUserLoggedin() {
             $('#firstName').val(data.firstName)
             $('#lastName').val(data.lastName)
             $('#email').val(data.email)
-            $('#prodImg').attr("src", `${data.profilePic === null ? `../../uploads/profpic/default.webp` : '../../uploads/profpic/'+data.profilePic}`)
+            $('#prodImg').attr("src", `${data.profilePic === null ? `../../../uploads/profpic/default.webp` : '../../../uploads/profpic/'+data.profilePic}`)
             $('#profilePicRef').val(data.profilePic)
             $('#idRef').val(data.uid)
 
@@ -55,7 +57,7 @@ export function getUserLoggedin() {
 
 }
 
-getUserLoggedin()
+
 
 	//file type validation
 	$("#file").change(function() {
@@ -86,7 +88,7 @@ getUserLoggedin()
 		e.preventDefault();
 		$.ajax({
 			type: 'POST',
-			url: Routes.updateProfile,
+			url: '../../../api/updateprofile.php',
 			data: new FormData(this),
 			contentType: false,
 			cache: false,
@@ -103,7 +105,7 @@ getUserLoggedin()
 					// $('#uploadNewRecipeForm')[0].reset();
 					$('.statusMsg').html(`<span style="font-size:18px;color:#34A853">${parseResponse.description}</span>`);
                     setTimeout(()=>
-                    {window.location.href = '../../index.html'}, 1300)
+                    {window.location.href = '../index.html'}, 1300)
 				}
 				else{
 					$('.statusMsg').html(`<span style="font-size:18px;color:red">${parseResponse.data}</span>`);

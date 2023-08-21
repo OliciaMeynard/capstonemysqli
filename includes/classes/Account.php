@@ -99,7 +99,7 @@ class Account{
             array_push($this->errorArray, Constants::$userNameCharacters);
         }
 
-    $query = "SELECT username FROM users WHERE username = '$userName'";
+    $query = "SELECT username FROM ".TBL_USERS." WHERE username = '$userName'";
     $results = $this->con->query($query);
 
 
