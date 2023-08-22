@@ -66,11 +66,19 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="#messages">
                         <span class="icon">
                             <ion-icon name="chatbubble-outline"></ion-icon>
                         </span>
                         <span class="title">Messages</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../../index.html">
+                        <span class="icon">
+                            <ion-icon name="home-outline"></ion-icon>
+                        </span>
+                        <span class="title">Back to Frontend</span>
                     </a>
                 </li>
 
@@ -266,6 +274,38 @@
                                         <th >Posted By</th>
                                         <th >Body</th>
                                         <th >Date Posted</th>
+                                        <th >Action</th>
+                          
+                
+                                    </tr>
+                                </thead>
+                
+                                <tbody id="content"></tbody>
+                            </table>
+                        </div>
+                        
+                    </section>
+
+            </div>
+            <!-- ================ Message List ================= -->
+            <div class="containerPortion">
+              
+                    <!-- ================ Messages CODE ================= -->
+                    <section class="sectionComments " id="messages">
+                        <h2 class="ms-2 section-header">Messages Management</h2>
+                
+                        <div class="container">
+                            <table class="table table-striped display dataTable" id="messagerecords"  width='100%'>
+                                <thead>
+                                    <tr scope="col">
+                
+                                        
+                                        
+                               
+                                        <th >ID</th>
+                                        <th >Sender</th>
+                                        <th >Message</th>
+                                        <th >Date Sent</th>
                                         <th >Action</th>
                           
                 

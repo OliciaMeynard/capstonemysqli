@@ -12,6 +12,7 @@ export const allComments = '../../api/allComments.php'
 export const updateRecipe = '../../api/updateRecipe.php'
 export const updateProfile = '../../api/updateProfile.php'
 export const profile = '../../api/profile.php'
+export const message = '../../api/message.php'
 
 
 console.log('connected routes')

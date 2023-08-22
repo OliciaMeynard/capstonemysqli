@@ -12,6 +12,7 @@ include_once '../includes/classes/Admin.php';
 include_once '../includes/classes/User.php';
 include_once '../includes/classes/FormSanitizer.php';
 include_once '../includes/classes/Comment.php';
+include_once '../includes/classes/Message.php';
 
 // unlink('../uploads/recipeImgs/text.txt');
 

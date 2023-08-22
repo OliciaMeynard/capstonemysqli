@@ -1,10 +1,13 @@
 .signInContainer{
     background: white;
+
 }
 
 .column{
     background: black;
     color: white;
+    position: relative;
+    z-index: 9;
 }
 
 .header{
@@ -20,4 +23,16 @@
     background: black;
     color: white;
     border: white 2px solid;
+}
+
+.btnFrontend{
+    background: white;
+    color: black;
+    width: 16rem;
+    text-align: center;
+    border-radius: 1rem;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    z-index: 8;
 }

@@ -24,6 +24,7 @@ function checkLoggedIn () {
                 fetchUsers()
                 fetchRecipes()
                 fetchComments()
+                fetchMessages()
                 
             } else {
                 window.location.href = '../index.html'
@@ -42,7 +43,9 @@ function checkLoggedIn () {
 
 }
 
-checkLoggedIn ()
+
+
+window.addEventListener('load', checkLoggedIn)
 
 
 
@@ -334,6 +337,73 @@ function viewRecipe(id){
 }
 
 
+
+//////////////////////////////FETCH MESSAGES
+function fetchMessages() {
+
+
+    
+    usersTable = $("#messagerecords").DataTable({
+        processing : true,
+        responsive: true,
+        ajax : {
+            url : '../../api/message.php' + "?index",
+            dataSrc : function (response) {
+                console.log(response)
+                let return_data = new Array();
+
+                for (let i = 0; i<response.data.length; i++) 
+                {
+                    let id = response.data[i].id
+                    return_data.push({
+                        id :  id,
+                        name :  response.data[i].name,
+                        message :  response.data[i].message,
+                        date :  response.data[i].date,
+                        action : " <button class='btn btn-dark' onclick='destroyMessage(" + id + ")'><ion-icon name='trash-outline'></ion-icon></button></td>"
+                    });
+                }
+
+                return return_data;
+            },
+            complete : function() {
+                //@TODO
+                //@var change databale 
+                $('#messagerecords').on('dblclick', 'td', function() {
+                    let data = $('#messagerecords')
+                        .DataTable()
+                        .row(this)
+                        .data()
+                    alert(data.id)
+  
+                });
+            },
+        },
+        columns : [
+
+
+            { data : 'id' },
+            { data : 'name' },
+            { data : 'message' },
+            { data : 'date' },
+            { data : 'action' },
+        ],
+        // dom : 'lBfrtip',
+        // buttons : [
+        //     'copyHtml5',
+        //     'excelHtml5',
+        //     'csvHtml5',
+        //     'print',
+        //     'pdf'
+        // ]
+    });
+}
+
+
+
+
+
+
 ////////////////////////DELETE USER
 function destroyUser(id){
 
@@ -407,6 +477,37 @@ function destroyComment(id){
                     console.log('deleted')
                     alert('Successfully Deleted')
                     location.reload();
+                }
+            },
+            "error" : function (xhr, status, error) { //error yung response
+                alert("Error")
+            }
+        });
+
+    }
+
+
+}
+////////////////DELETE MESSAGE
+function destroyMessage(id){
+
+    if(window.confirm("Do you want to delete this Recipe?")){
+        $.ajax({
+            "url" : '../../api/message.php', 
+            "type" : "POST", 
+             "data" : "destroy=" + JSON.stringify(id), 
+    
+            "success" : function (response) { //success yung response
+                parseResponse = JSON.parse(response)
+                console.log(parseResponse)
+                if(parseResponse.status === 200){
+                    console.log('deleted')
+                    alert('Successfully Deleted')
+                    location.reload();
+                }
+
+                else{
+                    alert('Could not Delete')
                 }
             },
             "error" : function (xhr, status, error) { //error yung response

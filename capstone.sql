@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 21, 2023 at 05:57 PM
+-- Generation Time: Aug 22, 2023 at 06:16 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -164,6 +164,29 @@ INSERT INTO `favorites` (`id`, `username`, `commentId`, `recipeId`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `messages`
+--
+
+CREATE TABLE `messages` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `message` varchar(255) NOT NULL,
+  `date` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `messages`
+--
+
+INSERT INTO `messages` (`id`, `name`, `message`, `date`) VALUES
+(1, 'Anonymous', 'First sample message', '2023-08-22 23:08:55'),
+(2, 'Unknown', 'This is a sample message number 2', '2023-08-22 23:10:37'),
+(3, 'Rider', 'Hello darkness my old friend', '2023-08-22 23:43:15'),
+(4, 'Hellscream', 'Burrrrrrrrnnnnnnnnnnnnnnnn!!!!!!', '2023-08-22 23:43:32');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `recipes`
 --
 
@@ -191,7 +214,7 @@ INSERT INTO `recipes` (`id`, `title`, `ingredients`, `filePath`, `privacy`, `upl
 (77, 'Perfect Sushi Rice', '2 cups uncooked glutinous white rice (sushi rice),\r\n\r\n3 cups water,\r\n\r\n½ cup rice vinegar,\r\n\r\n1 tablespoon vegetable oil,\r\n\r\n¼ cup white sugar,\r\n\r\n1 teaspoon salt', '64bfaa398e240sushi.jpg', 1, '2023-07-25 18:55:53', 386, 'meynard', 'asiancuisine', 'Gather all ingredients.\r\n\r\nRinse the rice in a strainer or colander under cold running water until the water runs clear.\r\n\r\nCombine rice and water in a saucepan over medium-high heat and bring to a boil., Reduce heat to low, cover, and cook until rice is tender and all water has been absorbed, about 20 minutes., Remove from stove and set aside until cool enough to handle.\r\n\r\nMeanwhile combine rice vinegar - oil, - sugar - and salt in a small saucepan over medium heat. Cook until the sugar has dissolved. Allow to cool  then stir into the cooked rice. While mixture will appear very wet at first, keep stirring and rice will dry as it cools.\r\n', 'Here is my recipe for the perfect sushi rice. You can eat this alone or roll into your favorite sushi roll with ingredients of choice. I use strips of carrots, cucumbers and slices of avocado. You can adjust the amount of vinegar in this recipe to suit your taste.'),
 (78, 'Spinach and Sun-Dried Tomato Pasta', '1 cup vegetable broth\r\n\r\n12 dehydrated sun-dried tomatoes\r\n\r\n1 (8 ounce) package uncooked penne pasta\r\n\r\n2 tablespoons pine nuts\r\n\r\n1 tablespoon olive oil\r\n\r\n¼ teaspoon crushed red pepper flakes\r\n\r\n1 clove garlic, minced\r\n\r\n1 bunch fresh spinach', '64bfae2ed13a5spinachandsundriedtomatopastasalad1-1-of-1.jpg', 1, '2023-07-25 19:12:46', 145, 'meynard', 'vegetarian', 'In a small saucepan bring the broth to a boil. Remove from heat. Place the sun-dried tomatoes in the broth 15 minutes  or until softened. Drain reserving broth, and coarsely chop.,\r\n\r\nBring a large pot of lightly salted water to a boil. Place penne pasta ', 'I created this simple Sicilian-style pasta dish one day when trying to use up some sun-dried tomatoes.'),
 (79, 'Greek Couscous Salad', '½ cup water,\r\n\r\n¼ cup chicken broth,\r\n\r\n1 teaspoon minced garlic,\r\n\r\n½ cup pearl (Israeli) couscous,\r\n\r\n1 cup canned chickpeas (garbanzo beans), rinsed and drained,\r\n\r\n¼ cup chopped sun-dried tomatoes,\r\n\r\n¼ cup sliced Kalamata olives\r\n\r\n2 tablespoons crum', '64bfaee8602831389405-19d4e5ab57bb43c6a023b8a3b9b267b3.webp', 0, '2023-07-25 19:15:52', 29, 'meynard', 'asiancuisine', 'Pour water and chicken broth into a saucepan; stir in the garlic and bring to a boil. Stir in pearl couscous, cover the pan and remove from heat. Allow couscous to stand until water has been absorbed, about 5 minutes; fluff with a fork. Allow couscous to burn', 'This hearty Greek couscous salad uses Israeli couscous. So delicious!'),
-(80, 'Salmon Couscous Salad', '1/2 cup mayonnaise,\r\n\r\n1/2 cup buttermilk,\r\n\r\n1/4 cup prepared pesto,\r\n\r\n1 lemon, juiced,\r\n\r\n1 clove garlic,\r\n\r\nground black pepper to taste,\r\n\r\nCouscous:,\r\n\r\n1 (5.8 ounce) package herb and garlic couscous,\r\n\r\nSalmon:,\r\n\r\n1/2 pound salmon filet, with skin', '64bfb0378f17f7561932_Salmon-Couscous-Salad_TheDailyGourmet_4x3-e770324e8ab44d2097bbbc9c48be0122.webp', 1, '2023-07-25 19:21:27', 181, 'blazeDreyden', 'salad', 'Add mayonnaise buttermilk pesto, lemon juice, and garlic to the bowl of a food processor. Blend until smooth. Season to taste with black pepper. Set dressing aside.,\r\n\r\nMeanwhile heat a skillet over medium-high heat. Season salmon with Greek seasoning. Cu', 'This salmon couscous salad recipe features salmon, couscous, and arugula salad layered in a bowl and drizzled with homemade pesto dressing for a unique presentation. This dish is a nod to a dish I tried at a local restaurant.'),
+(80, 'Salmon Couscous Salad', '1/2 cup mayonnaise,\r\n\r\n1/2 cup buttermilk,\r\n\r\n1/4 cup prepared pesto,\r\n\r\n1 lemon, juiced,\r\n\r\n1 clove garlic,\r\n\r\nground black pepper to taste,\r\n\r\nCouscous:,\r\n\r\n1 (5.8 ounce) package herb and garlic couscous,\r\n\r\nSalmon:,\r\n\r\n1/2 pound salmon filet, with skin', '64bfb0378f17f7561932_Salmon-Couscous-Salad_TheDailyGourmet_4x3-e770324e8ab44d2097bbbc9c48be0122.webp', 1, '2023-07-25 19:21:27', 185, 'blazeDreyden', 'salad', 'Add mayonnaise buttermilk pesto, lemon juice, and garlic to the bowl of a food processor. Blend until smooth. Season to taste with black pepper. Set dressing aside.,\r\n\r\nMeanwhile heat a skillet over medium-high heat. Season salmon with Greek seasoning. Cu', 'This salmon couscous salad recipe features salmon, couscous, and arugula salad layered in a bowl and drizzled with homemade pesto dressing for a unique presentation. This dish is a nod to a dish I tried at a local restaurant.'),
 (81, 'Tarragon Chicken Salad', '4 boneless, skinless chicken breasts\r\n\r\n1 tablespoon olive oil\r\n\r\n1 pinch salt\r\n\r\n1 pinch freshly ground black pepper\r\n\r\n\r\n1/2 cup mayonnaise\r\n\r\n1/4 cup plain Greek yogurt\r\n\r\n2 tablespoons freshly squeezed lemon juice\r\n\r\n1 teaspoon Dijon mustard\r\n\r\n2 tabl', '64c1ed950a124chicken_taragon.jpg', 1, '2023-07-27 12:07:49', 41, 'jdCoke', 'salad', 'Gather the ingredients. Preheat the oven to 350 F.\r\n\r\nRub the chicken breasts with the olive oil and place them on a sheet pan. Sprinkle with salt and pepper. Roast them in the oven for 35 to 40 minutes, until the chicken is cooked through. Set aside to c', 'Chicken salad is a deli and sandwich favorite for many. Chunks of cooked skinless, boneless chicken breast tossed in mayonnaise dressing often with diced celery is delicious. We love it on bread or just served on the side with crackers and fruit, but this'),
 (85, 'Honey Walnut Shrimp', '1 cup water\r\n\r\n⅔ cup white sugar\r\n\r\n½ cup walnuts\r\n\r\n4 large egg whites\r\n\r\n⅔ cup mochiko (glutinous rice flour)\r\n\r\n1 cup vegetable oil for frying\r\n\r\n1 pound large shrimp, peeled and deveined\r\n\r\n¼ cup mayonnaise\r\n\r\n2 tablespoons honey\r\n\r\n1 tablespoon canne', '64c45ed2de686honey-walnut-shrimp-5.jpg', 0, '2023-07-27 17:45:26', 99, 'jdCoke', 'asiancuisine', 'Stir together water and sugar in a small saucepan over high heat. Bring to a boil and add walnuts. Boil for 2 minutes, then drain and place walnuts on a cookie sheet to dry.\r\n\r\nWhip egg whites in a medium bowl until foamy. Stir in mochiko until it has a p', 'This honey walnut shrimp is a Hong Kong-style recipe! Crispy battered shrimp are tossed in a creamy sauce and topped with sugar-coated walnuts.'),
 (86, 'sample', 'sample\r\n\r\nsample\r\n\r\nsample\r\n\r\nsample\r\n\r\nsample\r\n', '64c46b5664c48b56cf5a82570ac42edbe03559c0d8c12.jpg', 0, '2023-07-29 09:28:11', 105, 'sample', 'asiancuisine', 'sample\r\n\r\nsamplesample\r\n\r\nsample\r\n', 'sample samplesample'),
@@ -310,6 +333,12 @@ ALTER TABLE `favorites`
   ADD KEY `users_to_favorites2` (`username`);
 
 --
+-- Indexes for table `messages`
+--
+ALTER TABLE `messages`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `recipes`
 --
 ALTER TABLE `recipes`
@@ -353,6 +382,12 @@ ALTER TABLE `comments`
 --
 ALTER TABLE `favorites`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=388;
+
+--
+-- AUTO_INCREMENT for table `messages`
+--
+ALTER TABLE `messages`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `recipes`

@@ -58,4 +58,33 @@ function store(e){
 }
 
 
+function checkLoggedIn () {
+    $.ajax({
+        url : '../api/adminCheckIfLoggedin.php', //URL of the API
+        type : "POST", //GET and POST 
+        success : function (response) { //success yung response
+            console.log(response)
+            const parseResponse = JSON.parse(response)       
+            if(parseResponse.status == 200){
+                window.location.href = './adminpanel'
+                
+            } else {
+                return;
+                
+            }
+           
+            // $("#total_users").text(parseResponse.data[0].total_users);
 
+        },
+        "error" : function (xhr, status, error) { //error yung response
+            console.log(parseResponse)
+        }
+    });
+
+    
+
+}
+
+
+
+window.addEventListener('load', checkLoggedIn)

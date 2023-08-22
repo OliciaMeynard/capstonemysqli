@@ -14,6 +14,8 @@ main{
     /* max-width: 30rem; */
 }
 
+
+
 .container{
     max-width: 70rem;
 }
@@ -33,7 +35,7 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control:before, table.dataT
 .section-header{
     text-align: center;
     margin-bottom: 3rem;
-    text-transform: uppercase;
+
 }
 
 #signoutbtn a{
@@ -59,3 +61,7 @@ li a .signoutAdminspan:hover, li a #signoutAdmin:hover{
     color: black;
     
 } */
+
+.containerPortion{
+    margin-bottom: 10rem;
+}

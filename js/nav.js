@@ -4,7 +4,7 @@ import * as checkLoggedIn from './checkLoggedIn.js'
 
 const headerNav = document.querySelector('.header-nav')
 
-export function createNav (imgSrcLogo, apiLogout, apiCheckLogIn, homeLink,  shareRecipeLink, loginLink, allrecipelink, searchLink, profileLink, profilePicRoute) {
+export function createNav (imgSrcLogo, apiLogout, apiCheckLogIn, homeLink,  shareRecipeLink, loginLink, allrecipelink, searchLink, profileLink, profilePicRoute, aboutLink) {
 
 
 
@@ -53,12 +53,14 @@ export function createNav (imgSrcLogo, apiLogout, apiCheckLogIn, homeLink,  shar
 
     const secondLi = document.createElement('li');
     const liLink2 = document.createElement('a');
-    liLink2.textContent = 'See All Recipes'
+    liLink2.textContent = 'Recipes'
     liLink2.href = allrecipelink
     liLink2.setAttribute('data-nav-link', '')
     liLink2.classList.add("navbar-link","hover:underline")
     secondLi.appendChild(liLink2 )
     secondLi.classList.add("navbar-item")
+
+
 
     
     const thirdLi = document.createElement('li');
@@ -77,10 +79,19 @@ export function createNav (imgSrcLogo, apiLogout, apiCheckLogIn, homeLink,  shar
     liLink3.classList.add("navbar-link","hover:underline")
     thirdLi.appendChild(liLink3 )
     thirdLi.classList.add("navbar-item")
+
+    const fourthLi = document.createElement('li');
+    const liLink4 = document.createElement('a');
+    liLink4.textContent = 'About'
+    liLink4.href = aboutLink
+    liLink4.setAttribute('data-nav-link', '')
+    liLink4.classList.add("navbar-link","hover:underline")
+    fourthLi.appendChild(liLink4 )
+    fourthLi.classList.add("navbar-item")
     
     
     
-    ul.append(firstLi, secondLi, thirdLi )
+    ul.append(firstLi, secondLi, liLink4, thirdLi )
 
     nav.appendChild(ul)
 
