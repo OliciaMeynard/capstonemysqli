@@ -157,11 +157,13 @@ a:link{
 /* SIGN UP PAGE */
 .signInContainer{
     background-color: #efefee;
-    height: 100vh;
     display: flex;
     justify-content:  center;
     align-items: center;
     position: relative;
+
+        margin-top: 7rem;
+        margin-bottom: 7rem;
 }
 
 .signInContainer  .logoSignIn{

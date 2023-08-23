@@ -970,6 +970,11 @@
    * FOOTER
    */
 
+
+   .footer{
+    border-top: 2px solid rgb(125, 125, 125);
+    margin-top: 9rem;
+   }
    .footer-top {
     display: grid;
     grid-template-columns: 1fr 0.4fr 0.4fr 0.4fr 0.4fr; }
