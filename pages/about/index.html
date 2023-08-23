@@ -27,48 +27,60 @@
 
    </section>
 
- 
+   <section class="container container-about">
+   <div class="accordion" id="accordionExample">
 
-    <div class="signInContainer">
-
-        <!-- LOADING SPINNER -->
-        <div class="text-center divSpinner">
-            <div class="spinner-border" id="spinner-border" role="status">
-            </div>
-            <h4>Loading...</h4>
-        </div>
-        <!-- LOADING SPINNER -->
-
-        <form class="column" id="formMessage">
-            <div class="mb-5">
-                <h2>Message Us</h2>
-            </div>
-            <div class='mb-3 mt-6'>
-                <label for="exampleInputEmail1 mb-3">Name</label>
-                 <input type='text' class='form-control' id="name" name='name' placeholder='Your name' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-sm' required>
-            </div>
-
-            <div class='mb-3'>
-                <label for="exampleInputEmail1 mb-3">Message</label>
-                <textarea rows='3' placeholder='Message' class='form-control textareaForm' id="message" name='message' ></textarea>
-            </div>
-
-       
-            <input type='submit' class='btn-sendmail' name='sendButton' id="send_button" value="Send"/>
-        </form>
-
-
+    <div class="page-header">
+        <h1 class="all-page-header">ABOUT US</h1>
     </div>
-    <!-- TOAST -->
-    <div class="toast align-items-center  border-0" role="alert" aria-live="assertive" aria-atomic="true" id="myToast">
-        <div class="d-flex">
-          <div class="toast-body">
-            Message sent!
-          </div>
-          <button type="button" id="btn-close-toast" class="btn-close  btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+
+<!--         
+    <div class="img-div-about">
+        <img src="../../assets/imgs/logo.png" class="logo-img-about" alt="">
+    </div> -->
+
+
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            Who We Are
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+           RecipeShare is a community built by and for kitchen experts: The cooks who will dedicate the weekend to a perfect beef bourguignon but love the simplicity of a slow-cooker rendition, too. The bakers who labor over a showstopping 9-layer cake but will just as happily doctor boxed brownies for a decadent weeknight dessert. The entertainers who just want a solid snack spread, without tons of dirty dishes at the end of the night.
+            Most importantly, Allrecipes connects home cooks with their greatest sources of inspiration — other home cooks. We're the world's leading digital food brand, and that inspires us to do everything possible to keep our community connected. Sixty-million home cooks deserve no less.
         </div>
       </div>
-    <!-- TOAST -->
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            Our History
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+            Founded in 2023 Recipeshare changed the food world by providing the tools to share recipes and cooking tips, while celebrating the expertise of home cooks online. Since then, Allrecipes has become the world's largest community-driven food brand, providing trusted resources to more than 60 million home cooks each month. 
+
+            Every day, cooks from around the world publish recipes and inspire one another through recipe photos, ratings, reviews, and videos. The combination of the Allrecipes community with our team of editorial and kitchen professionals provides authority found nowhere else on the internet and has turned the brand into an indispensable resource for cooks of all skill levels.
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            Community Guidelines
+        </button>
+      </h2>
+      <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+            Social media influencers, registered dietitians, grillmasters, and more seasoned home cooks make up our enthusiastic squad of 100+ brand ambassadors. This diverse, food-loving crew spans the U.S. geographically and represents many different cultures, ethnicities, and family makeups. Since 2011, the Allstars have created tens of thousands of original recipes, photos, and reviews plus shared their cooking expertise via flat and video content on our website, social media, plus more marketing channels.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 
     <footer class="footer">

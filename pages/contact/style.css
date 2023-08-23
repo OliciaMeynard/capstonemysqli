@@ -1,0 +1,36 @@
+.profileEmailPic{
+    height: 9rem;
+    width: 9rem;
+    object-fit: cover;
+    border-radius: 50rem;
+}
+
+.btn-sendmail{
+    background: black;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+}
+
+.column .form-control{
+    font-size: 1.5rem;
+}
+
+
+.left{
+    min-width: 30rem;
+}
+
+
+  
+  .bg-image {
+    background-image: url('https://source.unsplash.com/kKvQJ6rK6S4/660x1000');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+
+  .column{
+    box-shadow: none;
+  }

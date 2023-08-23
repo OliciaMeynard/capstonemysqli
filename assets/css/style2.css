@@ -1184,3 +1184,13 @@
   padding: 2rem;
   border-radius: 1.5rem;
 }
+
+
+.page-header{
+  width: 100%;
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.all-page-header{
+  font-size: 5rem;
+}

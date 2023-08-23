@@ -5,7 +5,7 @@ import * as footer from '../../js/createFooter.js'
 
 
 
-nav.createNav("../../assets/imgs/logo.png", '../../api/logout.php', '../../api/checkIfLoggedIn.php', '../../index.html','../../pages/upload' ,'../../pages/login', '../../pages/allrecipes', '../../pages/allrecipes/index.html?search', '#','../../uploads/profpic/', '../../pages/about')
+nav.createNav("../../assets/imgs/logo.png", '../../api/logout.php', '../../api/checkIfLoggedIn.php', '../../index.html','../../pages/upload' ,'../../pages/login', '../../pages/allrecipes', '../../pages/allrecipes/index.html?search', '#','../../uploads/profpic/', '../../pages/about', '../../pages/contact')
 footer.createFooter('../../assets/imgs/logo.png');
 
 

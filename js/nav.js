@@ -4,7 +4,7 @@ import * as checkLoggedIn from './checkLoggedIn.js'
 
 const headerNav = document.querySelector('.header-nav')
 
-export function createNav (imgSrcLogo, apiLogout, apiCheckLogIn, homeLink,  shareRecipeLink, loginLink, allrecipelink, searchLink, profileLink, profilePicRoute, aboutLink) {
+export function createNav (imgSrcLogo, apiLogout, apiCheckLogIn, homeLink,  shareRecipeLink, loginLink, allrecipelink, searchLink, profileLink, profilePicRoute, aboutLink, contactLink) {
 
 
 
@@ -88,10 +88,20 @@ export function createNav (imgSrcLogo, apiLogout, apiCheckLogIn, homeLink,  shar
     liLink4.classList.add("navbar-link","hover:underline")
     fourthLi.appendChild(liLink4 )
     fourthLi.classList.add("navbar-item")
+
+
+    const fiftthLi = document.createElement('li');
+    const liLink5 = document.createElement('a');
+    liLink5.textContent = 'Contact Us'
+    liLink5.href = contactLink
+    liLink5.setAttribute('data-nav-link', '')
+    liLink5.classList.add("navbar-link","hover:underline")
+    fiftthLi.appendChild(liLink5 )
+    fiftthLi.classList.add("navbar-item")
     
     
     
-    ul.append(firstLi, secondLi, liLink4, thirdLi )
+    ul.append(firstLi, secondLi, fourthLi, fiftthLi, thirdLi )
 
     nav.appendChild(ul)
 
@@ -110,7 +120,7 @@ export function createNav (imgSrcLogo, apiLogout, apiCheckLogIn, homeLink,  shar
     const uploadBtn = document.createElement('button');
     uploadBtn.classList.add('upload-btn')
     uploadBtn.setAttribute('aria-label', 'upload')
-    uploadBtn.innerHTML = ' <ion-icon name="duplicate-outline"></ion-icon> <span class="span">Share your Recipe</span>'
+    uploadBtn.innerHTML = ' <ion-icon name="duplicate-outline"></ion-icon> <span class="span">Upload</span>'
     uploadBtn.addEventListener('click', ()=> upload(checkLoggedIn.logInStatus, loginLink, shareRecipeLink))
 
     const navtoggleBtn = document.createElement('button');

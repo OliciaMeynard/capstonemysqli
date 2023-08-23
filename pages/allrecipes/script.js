@@ -8,7 +8,7 @@ import displayButtons from './displayButtons.js'
 // import * as checkLoggedIn from '../../js/checkLoggedIn.js'
 
 
-nav.createNav("../../assets/imgs/logo.png", '../../api/logout.php', '../../api/checkIfLoggedIn.php', '../../index.html','../../pages/upload' ,'../../pages/login', '#', '../../pages/allrecipes/index.html?search', '../../pages/profile','../../uploads/profpic/', '../../pages/about' )
+nav.createNav("../../assets/imgs/logo.png", '../../api/logout.php', '../../api/checkIfLoggedIn.php', '../../index.html','../../pages/upload' ,'../../pages/login', '#', '../../pages/allrecipes/index.html?search', '../../pages/profile','../../uploads/profpic/', '../../pages/about', '../../pages/contact' )
 footer.createFooter('../../assets/imgs/logo.png');
 
 
