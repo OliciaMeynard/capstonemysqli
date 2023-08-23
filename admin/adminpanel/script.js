@@ -359,7 +359,7 @@ function fetchMessages() {
                         id :  id,
                         name :  response.data[i].name,
                         message :  response.data[i].message,
-                        date :  response.data[i].date,
+                        date :  response.data[i].formattedDate,
                         action : " <button class='btn btn-dark' onclick='destroyMessage(" + id + ")'><ion-icon name='trash-outline'></ion-icon></button></td>"
                     });
                 }

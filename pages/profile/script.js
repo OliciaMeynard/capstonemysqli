@@ -34,8 +34,10 @@ console.log('idUrl', idUrl)
 let dataName;
 let loggeduserName;
 
-
-
+const sectionFollowers = document.querySelector('.sectionFollowers')
+const sectionFollowing = document.querySelector('.sectionFollowing')
+const recipesPostedDiv = document.querySelector('.recipesPostedDiv')
+const recipesFavoriteDiv = document.querySelector('.recipesFavoriteDiv')
 
 function show(idRequest){
 
@@ -70,7 +72,19 @@ function show(idRequest){
             $('#usernameProfilePage').text(`Username: ${data.username}`)
             $('#emailProfilePage').text(`Member since: ${data.formattedDateSignUp}`)
             ctaProfileEmail.href = `../../pages/sendemailprofile/index.html?uid=${data.uid}`
+            if(data.followers.length === 0){
+                sectionFollowers.style.display = 'none'
+            }
+            if(data.following.length === 0){
+                sectionFollowing.style.display = 'none'
+            }
 
+            if(data.recipePostedData.length === 0){
+                recipesPostedDiv.style.display = 'none' 
+            }
+            if(data.recipeFavoriteData.length === 0){
+                recipesFavoriteDiv.style.display = 'none' 
+            }
 
              ///////followers
              /////display followers

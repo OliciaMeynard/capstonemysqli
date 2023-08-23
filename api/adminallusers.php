@@ -9,7 +9,7 @@ if(isset($_GET['index'])){
     $response = array();
     $data = array(); 
                     
-                    $query = "SELECT * FROM ".TBL_USERS;
+                    $query = "SELECT * FROM ".TBL_USERS." ORDER BY signUpDate DESC";
 
                     $followings = $con->query($query); 
                     while ($row = $followings->fetch_assoc()){

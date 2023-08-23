@@ -10,7 +10,7 @@ class Message{
     }
 
     public function getMessages(){
-        $sql = "SELECT * FROM ".TBL_MESSAGES;
+        $sql = "SELECT * FROM ".TBL_MESSAGES." ORDER BY date DESC";
         $results= $this->con->query($sql);
 
         if($results){
@@ -18,6 +18,9 @@ class Message{
             $messages = array();
     
             while ($row = $results->fetch_assoc()) {
+                $timestamp=strtotime($row['date']);
+                $formattedDate = ago( $timestamp );
+                $row['formattedDate'] = $formattedDate;
                 array_push($messages, $row);
             }
     

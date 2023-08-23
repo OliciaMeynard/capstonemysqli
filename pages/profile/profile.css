@@ -140,7 +140,7 @@
     background: rgb(63, 0, 0);
     color: white;
 } */
-.recipesPostedDiv, .sectionFollowers, .recipesFavoriteDiv{
+.recipesPostedDiv, .sectionFollowers, .recipesFavoriteDiv, .sectionFollowing{
     margin: 6rem 0;
     max-width: 120rem;
     background:  white;

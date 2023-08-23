@@ -7,7 +7,7 @@ if(isset($_GET['index'])){
     $response = array();
     $data = array(); 
                     
-                    $query = "SELECT * FROM ".TBL_RECIPES;
+                    $query = "SELECT * FROM ".TBL_RECIPES." ORDER BY uploadDate DESC";
 
                     $followings = $con->query($query); 
                     while ($row = $followings->fetch_assoc()){
