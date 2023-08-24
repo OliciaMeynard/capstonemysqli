@@ -4,7 +4,7 @@ export let logInStatus;
 export let logInAllData;
 
 
-export function checkLoggedIn (apiLogIn, profilePicRoute) {
+export function checkLoggedIn (apiLogIn, profilePicRoute, blockPageRoute) {
     $.ajax({
         url : apiLogIn, //URL of the API
         type : "POST", //GET and POST 
@@ -19,13 +19,19 @@ export function checkLoggedIn (apiLogIn, profilePicRoute) {
             logInStatus = parseResponse.status
             let logInData = parseResponse.data
             
-            
+
             if(parseResponse.status == 200){
-                $('#divData').html(`<p>You are logged In as ${parseResponse.data.username}</p>`)
-                $('.btn-logIn').html('<ion-icon name="log-out-outline"></ion-icon> <span class="span">Logout</span>');
-                logInData.profilePic === null ?  $('#userProfileAvatar').attr('src', profilePicRoute +'default.webp' ) : $('#userProfileAvatar').attr('src', profilePicRoute+logInData.profilePic);
-                $('.userProfileSpan').text(logInData.username)
-                $('#profileLi').css('display', 'block')
+                    if(parseResponse.data.status === 'unblock'){
+                        return window.location.href = blockPageRoute
+                    }
+
+                    else{
+                      $('#divData').html(`<p>You are logged In as ${parseResponse.data.username}</p>`)
+                      $('.btn-logIn').html('<ion-icon name="log-out-outline"></ion-icon> <span class="span">Logout</span>');
+                       logInData.profilePic === null ?  $('#userProfileAvatar').attr('src', profilePicRoute +'default.webp' ) : $('#userProfileAvatar').attr('src', profilePicRoute+logInData.profilePic);
+                      $('.userProfileSpan').text(logInData.username)
+                       $('#profileLi').css('display', 'block')
+                    }
 
             } else {
                 $('#divData').html(`<p>You are not logged in</p>`)

@@ -1199,3 +1199,12 @@
 .all-page-header{
   font-size: 5rem;
 }
+
+.blocktext{
+  font-size: 7rem;
+}
+
+.blockBtn{
+  font-size: 1rem;
+  padding: 1rem 2rem;
+}

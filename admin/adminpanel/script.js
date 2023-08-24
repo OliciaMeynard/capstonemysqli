@@ -139,7 +139,8 @@ function fetchUsers() {
                         followers :  response.data[i].followers,
                         recipePosted :  response.data[i].recipePosted,
                         following :  response.data[i].following,
-                        action : "<button onclick='viewUser(" + id + ")' class='btn btn-secondary'><ion-icon name='create-outline'></ion-icon></button> <button class='btn btn-dark' onclick='destroyUser(" + id + ")'><ion-icon name='trash-outline'></ion-icon></button></td>"
+                        action : `<button onclick='viewUser(${id})' class='btn btn-secondary'><ion-icon name='create-outline'></ion-icon></button> <button class='btn btn-dark' onclick='destroyUser(${id})'><ion-icon name='trash-outline'></ion-icon></button>`,
+                        block : `<button class='btn btn-${response.data[i].status === 'block' ? 'danger' : 'success'}' onclick='blockUser(${id})'>${response.data[i].status}</button></td>`
                     });
                 }
 
@@ -169,6 +170,7 @@ function fetchUsers() {
             { data : 'following' },
             { data : 'recipePosted' },
             { data : 'action' },
+            { data : 'block' },
         ],
         // dom : 'lBfrtip',
         // buttons : [
@@ -538,3 +540,26 @@ function logOut (){
 }
 
 signoutbtn.addEventListener('click', logOut)
+
+//////////////////////BLOCK USER
+function blockUser(id){
+    $.ajax({
+        "url" : '../../api/adminallusers.php', 
+        "type" : "POST", 
+         "data" : "block=" + JSON.stringify(id), 
+
+        "success" : function (response) { //success yung response
+            parseResponse = JSON.parse(response)
+            console.log(parseResponse)
+            if(parseResponse.status === 200){
+                console.log(parseResponse)
+                alert('Successfully Blocked')
+                location.reload();
+            }
+        },
+        "error" : function (xhr, status, error) { //error yung response
+            alert("Error")
+        }
+    });
+
+}

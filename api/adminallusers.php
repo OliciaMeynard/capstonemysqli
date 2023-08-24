@@ -45,3 +45,48 @@ if(isset($_GET['index'])){
 
 } 
 
+
+if(isset($_POST['block'])){
+
+    $response = array();
+    $data = array(); 
+
+    $id = json_decode($_POST['block']);
+
+    $query = "SELECT * FROM ".TBL_USERS." WHERE uid = '$id'";
+    $toBlock = $con->query($query); 
+    while ($row = $toBlock->fetch_assoc()){
+        array_push($data, $row);
+    }
+
+
+
+
+    if($data[0]['status'] === 'block'){
+        $query = "UPDATE ".TBL_USERS." SET status = 'unblock' WHERE uid = '$id'";
+        $wasSuccessful = $con->query($query);
+        
+        if($wasSuccessful){
+            $response = createResponse(200, 'block updated', 'Successfully blocked' );
+        }
+        else{
+            $response = createResponse(404, 'block Failed', 'Failed block');
+        }
+
+    }
+    else{
+        $query = "UPDATE ".TBL_USERS." SET status = 'block' WHERE uid = '$id'";
+        $wasSuccessful = $con->query($query);
+        
+        if($wasSuccessful){
+            $response = createResponse(200, 'unblock updated', 'Successfully unblocked' );
+        }
+        else{
+            $response = createResponse(404, 'unblock Failed', 'Failed unblock');
+        }
+    }
+
+    $response = createResponse(200, 'successful block', 'block unblock', $data[0]);
+    echo json_encode($response);
+
+}

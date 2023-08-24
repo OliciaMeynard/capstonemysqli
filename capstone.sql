@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 24, 2023 at 08:08 AM
+-- Generation Time: Aug 24, 2023 at 09:56 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -108,7 +108,8 @@ INSERT INTO `comments` (`id`, `postedBy`, `recipeId`, `body`, `datePosted`) VALU
 (51, 'meynard', 96, 'looks sweet', '2023-08-19 21:32:00'),
 (53, 'jdCoke', 77, 'cheers!', '2023-08-21 21:18:09'),
 (54, 'jdCoke', 99, 'wow!', '2023-08-21 21:18:43'),
-(56, 'meynard', 102, 'comment', '2023-08-23 20:31:23');
+(56, 'meynard', 102, 'comment', '2023-08-23 20:31:23'),
+(58, 'squall', 77, 'yes!', '2023-08-24 14:23:29');
 
 -- --------------------------------------------------------
 
@@ -160,7 +161,8 @@ INSERT INTO `favorites` (`id`, `username`, `commentId`, `recipeId`) VALUES
 (383, 'harry', 0, 77),
 (385, 'harry', 0, 101),
 (386, 'meynard', 0, 95),
-(387, 'meynard', 0, 96);
+(387, 'meynard', 0, 96),
+(389, 'squall', 0, 77);
 
 -- --------------------------------------------------------
 
@@ -213,9 +215,9 @@ CREATE TABLE `recipes` (
 INSERT INTO `recipes` (`id`, `title`, `ingredients`, `filePath`, `privacy`, `uploadDate`, `views`, `uploadedBy`, `category`, `howtocook`, `description`) VALUES
 (74, 'Cook steak like a chef', '2 (6 ounce) filet mignon steaks\r\n\r\n1 teaspoon olive oil\r\n\r\nCoarse kosher salt and freshly ground black pepper\r\n\r\n1/2 cup Cabernet Sauvignon\r\n\r\n2 tablespoons butter', '64b7d12c60789Cheffy-Garlic-Butter-Steak_7.webp', 0, '2023-07-19 20:03:56', 230, 'aziAcosta', 'asiancuisine', 'Bring to room temp: Take the steak out of the fridge 30 minutes prior to bring to room temperature.\r\n\r\nDry steaks: Pat dry with paper towels.,\r\nHeat skillet: Heat oil in a heavy based skillet over high heat until it is very hot – you should see smoke!\r\n\r\n', 'A steak is a thick cut of meat generally sliced across the muscle fibers, sometimes including a bone. It is normally grilled or fried. Steak can be diced, cooked in sauce, such as in steak and kidney pie, or minced and formed into patties, such as hamburg'),
 (75, 'Home Made Pizza', '1 package (1/4 ounce) active dry yeast\r\n\r\n1 teaspoon sugar\r\n\r\n1-1/4 cups warm water (110° to 115°)\r\n\r\n1/4 cup canola oil\r\n\r\n1 teaspoon salt\r\n\r\n3-1/2 to 4 cups all-purpose flour\r\n\r\n1/2 pound ground beef\r\n\r\n1 small onion, chopped\r\n\r\n1 can (15 ounces) tomato', '64b7d237ca53eSimply-Recipes-Homemade-Pizza-Dough-Lead-Shot-1c-c2b1885d27d4481c9cfe6f6286a64342.webp', 0, '2023-07-19 20:08:23', 249, 'aziAcosta', 'europeandish', 'In large bowl, dissolve yeast and sugar in water; let stand for 5 minutes. Add oil and salt. Stir in flour 1 cup at a time until a soft dough forms.\r\n\r\nTurn onto a floured surface; knead until smooth and elastic 2-3 minutes. Place in a greased bowl turnin', 'Make perfect pizza at home with this classic homemade pizza recipe, including a pizza dough recipe, topping suggestions, and step-by-step instructions with photos.'),
-(77, 'Perfect Sushi Rice', '2 cups uncooked glutinous white rice (sushi rice),\r\n\r\n3 cups water,\r\n\r\n½ cup rice vinegar,\r\n\r\n1 tablespoon vegetable oil,\r\n\r\n¼ cup white sugar,\r\n\r\n1 teaspoon salt', '64bfaa398e240sushi.jpg', 1, '2023-07-25 18:55:53', 394, 'meynard', 'asiancuisine', 'Gather all ingredients.\r\n\r\nRinse the rice in a strainer or colander under cold running water until the water runs clear.\r\n\r\nCombine rice and water in a saucepan over medium-high heat and bring to a boil., Reduce heat to low, cover, and cook until rice is tender and all water has been absorbed, about 20 minutes., Remove from stove and set aside until cool enough to handle.\r\n\r\nMeanwhile combine rice vinegar - oil, - sugar - and salt in a small saucepan over medium heat. Cook until the sugar has dissolved. Allow to cool  then stir into the cooked rice. While mixture will appear very wet at first, keep stirring and rice will dry as it cools.\r\n', 'Here is my recipe for the perfect sushi rice. You can eat this alone or roll into your favorite sushi roll with ingredients of choice. I use strips of carrots, cucumbers and slices of avocado. You can adjust the amount of vinegar in this recipe to suit your taste.'),
+(77, 'Perfect Sushi Rice', '2 cups uncooked glutinous white rice (sushi rice),\r\n\r\n3 cups water,\r\n\r\n½ cup rice vinegar,\r\n\r\n1 tablespoon vegetable oil,\r\n\r\n¼ cup white sugar,\r\n\r\n1 teaspoon salt', '64bfaa398e240sushi.jpg', 1, '2023-07-25 18:55:53', 395, 'meynard', 'asiancuisine', 'Gather all ingredients.\r\n\r\nRinse the rice in a strainer or colander under cold running water until the water runs clear.\r\n\r\nCombine rice and water in a saucepan over medium-high heat and bring to a boil., Reduce heat to low, cover, and cook until rice is tender and all water has been absorbed, about 20 minutes., Remove from stove and set aside until cool enough to handle.\r\n\r\nMeanwhile combine rice vinegar - oil, - sugar - and salt in a small saucepan over medium heat. Cook until the sugar has dissolved. Allow to cool  then stir into the cooked rice. While mixture will appear very wet at first, keep stirring and rice will dry as it cools.\r\n', 'Here is my recipe for the perfect sushi rice. You can eat this alone or roll into your favorite sushi roll with ingredients of choice. I use strips of carrots, cucumbers and slices of avocado. You can adjust the amount of vinegar in this recipe to suit your taste.'),
 (78, 'Spinach and Sun-Dried Tomato Pasta', '1 cup vegetable broth\r\n\r\n12 dehydrated sun-dried tomatoes\r\n\r\n1 (8 ounce) package uncooked penne pasta\r\n\r\n2 tablespoons pine nuts\r\n\r\n1 tablespoon olive oil\r\n\r\n¼ teaspoon crushed red pepper flakes\r\n\r\n1 clove garlic, minced\r\n\r\n1 bunch fresh spinach', '64bfae2ed13a5spinachandsundriedtomatopastasalad1-1-of-1.jpg', 1, '2023-07-25 19:12:46', 146, 'meynard', 'vegetarian', 'In a small saucepan bring the broth to a boil. Remove from heat. Place the sun-dried tomatoes in the broth 15 minutes  or until softened. Drain reserving broth, and coarsely chop.,\r\n\r\nBring a large pot of lightly salted water to a boil. Place penne pasta ', 'I created this simple Sicilian-style pasta dish one day when trying to use up some sun-dried tomatoes.'),
-(79, 'Greek Couscous Salad', '½ cup water,\r\n\r\n¼ cup chicken broth,\r\n\r\n1 teaspoon minced garlic,\r\n\r\n½ cup pearl (Israeli) couscous,\r\n\r\n1 cup canned chickpeas (garbanzo beans), rinsed and drained,\r\n\r\n¼ cup chopped sun-dried tomatoes,\r\n\r\n¼ cup sliced Kalamata olives\r\n\r\n2 tablespoons crum', '64bfaee8602831389405-19d4e5ab57bb43c6a023b8a3b9b267b3.webp', 0, '2023-07-25 19:15:52', 31, 'meynard', 'asiancuisine', 'Pour water and chicken broth into a saucepan; stir in the garlic and bring to a boil. Stir in pearl couscous, cover the pan and remove from heat. Allow couscous to stand until water has been absorbed, about 5 minutes; fluff with a fork. Allow couscous to burn', 'This hearty Greek couscous salad uses Israeli couscous. So delicious!'),
+(79, 'Greek Couscous Salad', '½ cup water,\r\n\r\n¼ cup chicken broth,\r\n\r\n1 teaspoon minced garlic,\r\n\r\n½ cup pearl (Israeli) couscous,\r\n\r\n1 cup canned chickpeas (garbanzo beans), rinsed and drained,\r\n\r\n¼ cup chopped sun-dried tomatoes,\r\n\r\n¼ cup sliced Kalamata olives\r\n\r\n2 tablespoons crum', '64bfaee8602831389405-19d4e5ab57bb43c6a023b8a3b9b267b3.webp', 0, '2023-07-25 19:15:52', 32, 'meynard', 'asiancuisine', 'Pour water and chicken broth into a saucepan; stir in the garlic and bring to a boil. Stir in pearl couscous, cover the pan and remove from heat. Allow couscous to stand until water has been absorbed, about 5 minutes; fluff with a fork. Allow couscous to burn', 'This hearty Greek couscous salad uses Israeli couscous. So delicious!'),
 (80, 'Salmon Couscous Salad', '1/2 cup mayonnaise,\r\n\r\n1/2 cup buttermilk,\r\n\r\n1/4 cup prepared pesto,\r\n\r\n1 lemon, juiced,\r\n\r\n1 clove garlic,\r\n\r\nground black pepper to taste,\r\n\r\nCouscous:,\r\n\r\n1 (5.8 ounce) package herb and garlic couscous,\r\n\r\nSalmon:,\r\n\r\n1/2 pound salmon filet, with skin', '64bfb0378f17f7561932_Salmon-Couscous-Salad_TheDailyGourmet_4x3-e770324e8ab44d2097bbbc9c48be0122.webp', 1, '2023-07-25 19:21:27', 186, 'blazeDreyden', 'salad', 'Add mayonnaise buttermilk pesto, lemon juice, and garlic to the bowl of a food processor. Blend until smooth. Season to taste with black pepper. Set dressing aside.,\r\n\r\nMeanwhile heat a skillet over medium-high heat. Season salmon with Greek seasoning. Cu', 'This salmon couscous salad recipe features salmon, couscous, and arugula salad layered in a bowl and drizzled with homemade pesto dressing for a unique presentation. This dish is a nod to a dish I tried at a local restaurant.'),
 (81, 'Tarragon Chicken Salad', '4 boneless, skinless chicken breasts\r\n\r\n1 tablespoon olive oil\r\n\r\n1 pinch salt\r\n\r\n1 pinch freshly ground black pepper\r\n\r\n\r\n1/2 cup mayonnaise\r\n\r\n1/4 cup plain Greek yogurt\r\n\r\n2 tablespoons freshly squeezed lemon juice\r\n\r\n1 teaspoon Dijon mustard\r\n\r\n2 tabl', '64c1ed950a124chicken_taragon.jpg', 1, '2023-07-27 12:07:49', 41, 'jdCoke', 'salad', 'Gather the ingredients. Preheat the oven to 350 F.\r\n\r\nRub the chicken breasts with the olive oil and place them on a sheet pan. Sprinkle with salt and pepper. Roast them in the oven for 35 to 40 minutes, until the chicken is cooked through. Set aside to c', 'Chicken salad is a deli and sandwich favorite for many. Chunks of cooked skinless, boneless chicken breast tossed in mayonnaise dressing often with diced celery is delicious. We love it on bread or just served on the side with crackers and fruit, but this'),
 (85, 'Honey Walnut Shrimp', '1 cup water\r\n\r\n⅔ cup white sugar\r\n\r\n½ cup walnuts\r\n\r\n4 large egg whites\r\n\r\n⅔ cup mochiko (glutinous rice flour)\r\n\r\n1 cup vegetable oil for frying\r\n\r\n1 pound large shrimp, peeled and deveined\r\n\r\n¼ cup mayonnaise\r\n\r\n2 tablespoons honey\r\n\r\n1 tablespoon canne', '64c45ed2de686honey-walnut-shrimp-5.jpg', 0, '2023-07-27 17:45:26', 100, 'jdCoke', 'asiancuisine', 'Stir together water and sugar in a small saucepan over high heat. Bring to a boil and add walnuts. Boil for 2 minutes, then drain and place walnuts on a cookie sheet to dry.\r\n\r\nWhip egg whites in a medium bowl until foamy. Stir in mochiko until it has a p', 'This honey walnut shrimp is a Hong Kong-style recipe! Crispy battered shrimp are tossed in a creamy sauce and topped with sugar-coated walnuts.'),
@@ -229,7 +231,8 @@ INSERT INTO `recipes` (`id`, `title`, `ingredients`, `filePath`, `privacy`, `upl
 (100, 'Lobster Thermidor', '1 medium (1 1/2 pound) cooked lobster\r\n\r\n2 tablespoons butter\r\n\r\n1 shallot, finely chopped\r\n\r\n1 ⅜ cups fresh fish stock\r\n\r\n¼ cup white wine\r\n\r\n¼ cup heavy cream\r\n\r\n½ teaspoon hot English mustard\r\n\r\n2 tablespoons chopped fresh parsley\r\n\r\n1 tablespoon fresh', '64d5b2845ace287997400-56a2f6f75f9b58b7d0cfe47a.jpg', 0, '2023-08-11 12:01:08', 77, 'blazeDreyden', 'asiancuisine', 'Cut lobster in half lengthwise, and remove any meat from the claws, tail, and head. Cut meat into pieces and place back into the shells.\r\n\r\nMelt butter in a large skillet over medium heat. Add shallot; cook and stir until tender. Mix in fish stock, white wine, and cream. Bring to a boil, and cook until reduced by half. Mix in parsley, lemon juice, mustard, salt, and pepper.\r\n\r\npreheat oven boilerrrrrr\r\n\r\n', 'This stunning lobster Thermidor is surprisingly simple to make. Lobster shells are stuffed with cooked lobster in a creamy white wine sauce, then topped with Parmesan cheese and broiled until golden'),
 (101, 'Vegetable Teppanyaki', '1/4 white cabbage, julienned\r\n\r\n2 carrots, julienned\r\n\r\n1 zucchini, thinly sliced\r\n\r\n4 spring onions, chopped\r\n\r\n1 small red capsicum, thinly sliced\r\n\r\n1 small white onion, thinly sliced\r\n\r\n1 tbsp rice wine vinegar\r\n\r\n1 tbsp light soy sauce\r\n\r\n2 tsp mirin', '64d85df859c98bf8986bfc977b0951aec5902fcfa4630.jpg', 1, '2023-08-13 12:37:12', 80, 'wonyoung', 'vegetarian', 'Heat up a large griddle and set it to high.\r\n\r\nAdd sesame oil and once it’s near its smoking point add the vegetables. Let it sit in the griddle to partly brown on one side.\r\n\r\nCombine the rice wine vinegar, light soy sauce and mirin then sprinkle it over the vegetables while stir frying to give it some moisture. Cook vegetable for 1 to 2 minutes making sure it’s still crispy.\r\n\r\nSeason with sea salt if needed then place in serving platters, serve garnished with toasted sesame seeds.', 'Vegetable Teppanyaki is a Japanese dish of mixed vegetables cooked in a teppan, vegetables can be any mixture of cabbage, bean sprouts, carrots, capsicum, courgettes, beans and mushrooms but not limited to it.'),
 (102, 'Mughali Chicken', '4 cardamom pods\r\n\r\n10 garlic cloves, peeled\r\n\r\n6 whole cloves\r\n\r\n4-1/2 teaspoons chopped fresh gingerroot\r\n\r\n1 tablespoon unblanched almonds\r\n\r\n1 tablespoon salted cashews\r\n\r\n1 teaspoon ground cinnamon\r\n\r\n6 small red onions, halved and sliced\r\n\r\n4 jalapen', '64dcbb0639da6Mughali-Chicken_EXPS_TOHON19_41746_B06_11_15b.jpg', 0, '2023-08-16 20:03:18', 41, 'rayMont', 'asiancuisine', 'Remove seeds from cardamom pods; place in a food processor. Add the garlic, cloves, ginger, almonds, cashews and cinnamon; cover and process until blended. Set aside.\r\n\r\nIn a large skillet, saute onions and jalapenos in oil until tender. Stir in water and the garlic mixture. Add the chicken, milk, yogurt and turmeric. Bring to a boil. Reduce heat; simmer, uncovered, until chicken juices run clear, 8-10 minutes. Sprinkle with cilantro. Serve with naan or rice if desired.', 'I enjoy cooking for my family and try to incorporate healthy new foods into our menus. This authentic Indian dish is a favorite. —Aruna Kancharla, Bentonville, Arkansas'),
-(106, 'Filipino Pork Sisig', 'Pork belly\r\n\r\nVegetable oil\r\n\r\nPineapple juice\r\n\r\nWater\r\n\r\nUnsalted butter\r\n\r\nChicken liver (fresh) or store bought liver pate\r\n\r\nRed onion\r\n\r\nRed or green chilies\r\n\r\nCalamansi juice, can substitute with lemon or lime juice\r\n\r\nSoy sauce\r\n\r\nSalt & pepper ', '64e388322ac83Sisig-Pork-Recipe.jpg', 0, '2023-08-21 23:52:18', 11, 'meynard', 'asiancuisine', 'To give pork sisig its delicious crunchy textures, you can either grill or pan fry the pork.\r\n\r\nIn this pork sisig recipe, we first boil the pork belly until tender and let it dry.\r\n\r\nWe then pan-fry the pork belly in a cast-iron skillet until it turns brown and crispy. Once we add the cooked chicken liver and seasonings we cook everything together in butter for even more crispy textures.', 'This easy pork sisig recipe is for one of the most popular Filipino foods. A combination of crunchy pork belly, citrusy calamansi juice, soy sauce and chilies will transport your taste buds to the Philippines. In only about 30 minutes, enjoy this specialty bursting with flavors.');
+(106, 'Filipino Pork Sisig', 'Pork belly\r\n\r\nVegetable oil\r\n\r\nPineapple juice\r\n\r\nWater\r\n\r\nUnsalted butter\r\n\r\nChicken liver (fresh) or store bought liver pate\r\n\r\nRed onion\r\n\r\nRed or green chilies\r\n\r\nCalamansi juice, can substitute with lemon or lime juice\r\n\r\nSoy sauce\r\n\r\nSalt & pepper ', '64e388322ac83Sisig-Pork-Recipe.jpg', 0, '2023-08-21 23:52:18', 11, 'meynard', 'asiancuisine', 'To give pork sisig its delicious crunchy textures, you can either grill or pan fry the pork.\r\n\r\nIn this pork sisig recipe, we first boil the pork belly until tender and let it dry.\r\n\r\nWe then pan-fry the pork belly in a cast-iron skillet until it turns brown and crispy. Once we add the cooked chicken liver and seasonings we cook everything together in butter for even more crispy textures.', 'This easy pork sisig recipe is for one of the most popular Filipino foods. A combination of crunchy pork belly, citrusy calamansi juice, soy sauce and chilies will transport your taste buds to the Philippines. In only about 30 minutes, enjoy this specialty bursting with flavors.'),
+(108, 'Strawberry Cake', 'Strawberry\r\n\r\nIcing\r\n\r\nSugar\r\n\r\nSalt\r\n\r\nSpice\r\n\r\nCreamer', '64e6f8607fc7edelicious-strawberry-cake-close-up-143996512.webp', 1, '2023-08-24 14:27:44', 0, 'squall', 'europeandish', 'Google\r\n\r\nyoutube\r\n\r\n\r\nwatch\r\n\r\nfollow instructions\r\n\r\n\r\nBake', 'My favorite cake');
 
 -- --------------------------------------------------------
 
@@ -269,7 +272,8 @@ INSERT INTO `subscribers` (`id`, `userTo`, `userFrom`) VALUES
 (187, 'meynard', 'hermione'),
 (188, 'meynard', 'wonyoung'),
 (191, 'sheene', 'blazeDreyden'),
-(198, 'meynard', 'harry');
+(198, 'meynard', 'harry'),
+(201, 'meynard', 'squall');
 
 -- --------------------------------------------------------
 
@@ -285,30 +289,32 @@ CREATE TABLE `users` (
   `email` varchar(100) NOT NULL,
   `password` varchar(255) NOT NULL,
   `signUpDate` datetime NOT NULL DEFAULT current_timestamp(),
-  `profilePic` varchar(255) DEFAULT NULL
+  `profilePic` varchar(255) DEFAULT NULL,
+  `status` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`uid`, `firstName`, `lastName`, `username`, `email`, `password`, `signUpDate`, `profilePic`) VALUES
-(2, 'Meynard', 'Olicia', 'meynard', 'olicia.meynard@gmail.com', 'ba3253876aed6bc22d4a6ff53d8406c6ad864195ed144ab5c87621b6c233b548baeae6956df346ec8c17f5ea10f35ee3cbc514797ed7ddd3145464e2a0bab413', '2023-07-18 00:56:39', 'qxkj97e87_img_1.jpg'),
-(4, 'Blaze', 'Olicia', 'blazeDreyden', 'blaze@gmail.com', 'ba3253876aed6bc22d4a6ff53d8406c6ad864195ed144ab5c87621b6c233b548baeae6956df346ec8c17f5ea10f35ee3cbc514797ed7ddd3145464e2a0bab413', '2023-07-18 20:10:51', '64cf5f65690feDSC_6603_-_Copy.JPG'),
-(5, 'Sheene Shazy Lou', 'Olicia', 'sheene', 'tabladasheene@gmail.com', 'ba3253876aed6bc22d4a6ff53d8406c6ad864195ed144ab5c87621b6c233b548baeae6956df346ec8c17f5ea10f35ee3cbc514797ed7ddd3145464e2a0bab413', '2023-07-18 20:13:58', '64cf620f91e742x2_(2).jpg'),
-(6, 'Azi', 'Acosta', 'aziAcosta', 'azi@gmail.com', 'ba3253876aed6bc22d4a6ff53d8406c6ad864195ed144ab5c87621b6c233b548baeae6956df346ec8c17f5ea10f35ee3cbc514797ed7ddd3145464e2a0bab413', '2023-07-18 20:17:47', 'az.webp'),
-(8, 'Jane', 'Deleon', 'jdCoke', 'janedeleon@olicia.com', 'ba3253876aed6bc22d4a6ff53d8406c6ad864195ed144ab5c87621b6c233b548baeae6956df346ec8c17f5ea10f35ee3cbc514797ed7ddd3145464e2a0bab413', '2023-07-22 07:36:23', 'jd.jpg'),
-(9, 'Donkey', 'Kong', 'dkong', 'dk@gmail.com', 'ba3253876aed6bc22d4a6ff53d8406c6ad864195ed144ab5c87621b6c233b548baeae6956df346ec8c17f5ea10f35ee3cbc514797ed7ddd3145464e2a0bab413', '2023-07-25 16:38:34', 'ddddddd_dk.jpg'),
-(10, 'Monkey', 'Luffy', 'luffy', 'luffy@gmail.com', 'ba3253876aed6bc22d4a6ff53d8406c6ad864195ed144ab5c87621b6c233b548baeae6956df346ec8c17f5ea10f35ee3cbc514797ed7ddd3145464e2a0bab413', '2023-07-25 16:40:15', '64cf65fd9f6b6OIP_(3).jpg'),
-(11, 'Sample', 'Sample', 'sample', 'sample@gmail.com', 'ba3253876aed6bc22d4a6ff53d8406c6ad864195ed144ab5c87621b6c233b548baeae6956df346ec8c17f5ea10f35ee3cbc514797ed7ddd3145464e2a0bab413', '2023-07-29 09:26:44', '64cf669d46c4ffghyf.jpg'),
-(12, 'Ray Marvin', 'Montero', 'rayMont', 'ray@gmail.com', 'ba3253876aed6bc22d4a6ff53d8406c6ad864195ed144ab5c87621b6c233b548baeae6956df346ec8c17f5ea10f35ee3cbc514797ed7ddd3145464e2a0bab413', '2023-07-30 19:41:18', '64cf65952cdbf5dd3047639f836b39515030997dd73c5.jpg'),
-(13, 'Richaurdie', 'Fernandezz', 'richie', 'rich@gmail.com', 'ba3253876aed6bc22d4a6ff53d8406c6ad864195ed144ab5c87621b6c233b548baeae6956df346ec8c17f5ea10f35ee3cbc514797ed7ddd3145464e2a0bab413', '2023-07-30 19:48:50', '64c674c32e44eR.jpg'),
-(14, 'John', 'Smith', 'johnsmith', 'meynard@gmail.com', 'ba3253876aed6bc22d4a6ff53d8406c6ad864195ed144ab5c87621b6c233b548baeae6956df346ec8c17f5ea10f35ee3cbc514797ed7ddd3145464e2a0bab413', '2023-08-01 20:14:14', '64c8f7c8ba048llllllll.jpg'),
-(15, 'Wonyoung', 'Jang', 'wonyoung', 'wonyoung@gmail.com', 'ba3253876aed6bc22d4a6ff53d8406c6ad864195ed144ab5c87621b6c233b548baeae6956df346ec8c17f5ea10f35ee3cbc514797ed7ddd3145464e2a0bab413', '2023-08-06 17:45:46', '64cf6fade708aa7b61f6c63963b5529bbfd3709361722.jpg'),
-(16, 'Blizzard', 'Frosty', 'blizzard', 'blizzard@gmail.com', 'ba3253876aed6bc22d4a6ff53d8406c6ad864195ed144ab5c87621b6c233b548baeae6956df346ec8c17f5ea10f35ee3cbc514797ed7ddd3145464e2a0bab413', '2023-08-06 23:53:46', NULL),
-(21, 'Hermione', 'Granger', 'hermione', 'hermione@gmail.com', 'ba3253876aed6bc22d4a6ff53d8406c6ad864195ed144ab5c87621b6c233b548baeae6956df346ec8c17f5ea10f35ee3cbc514797ed7ddd3145464e2a0bab413', '2023-08-09 17:24:40', NULL),
-(22, 'Harry', 'Potter', 'harry', 'harryP@gmail.com', 'ba3253876aed6bc22d4a6ff53d8406c6ad864195ed144ab5c87621b6c233b548baeae6956df346ec8c17f5ea10f35ee3cbc514797ed7ddd3145464e2a0bab413', '2023-08-17 19:32:39', NULL),
-(28, 'Super', 'Mario', 'mario', 'mario@gmail.com', 'ba3253876aed6bc22d4a6ff53d8406c6ad864195ed144ab5c87621b6c233b548baeae6956df346ec8c17f5ea10f35ee3cbc514797ed7ddd3145464e2a0bab413', '2023-08-24 10:34:34', NULL);
+INSERT INTO `users` (`uid`, `firstName`, `lastName`, `username`, `email`, `password`, `signUpDate`, `profilePic`, `status`) VALUES
+(2, 'Meynard', 'Olicia', 'meynard', 'olicia.meynard@gmail.com', 'ba3253876aed6bc22d4a6ff53d8406c6ad864195ed144ab5c87621b6c233b548baeae6956df346ec8c17f5ea10f35ee3cbc514797ed7ddd3145464e2a0bab413', '2023-07-18 00:56:39', 'qxkj97e87_img_1.jpg', 'block'),
+(4, 'Blaze', 'Olicia', 'blazeDreyden', 'blaze@gmail.com', 'ba3253876aed6bc22d4a6ff53d8406c6ad864195ed144ab5c87621b6c233b548baeae6956df346ec8c17f5ea10f35ee3cbc514797ed7ddd3145464e2a0bab413', '2023-07-18 20:10:51', '64cf5f65690feDSC_6603_-_Copy.JPG', 'block'),
+(5, 'Sheene Shazy Lou', 'Olicia', 'sheene', 'tabladasheene@gmail.com', 'ba3253876aed6bc22d4a6ff53d8406c6ad864195ed144ab5c87621b6c233b548baeae6956df346ec8c17f5ea10f35ee3cbc514797ed7ddd3145464e2a0bab413', '2023-07-18 20:13:58', '64cf620f91e742x2_(2).jpg', 'block'),
+(6, 'Azi', 'Acosta', 'aziAcosta', 'azi@gmail.com', 'ba3253876aed6bc22d4a6ff53d8406c6ad864195ed144ab5c87621b6c233b548baeae6956df346ec8c17f5ea10f35ee3cbc514797ed7ddd3145464e2a0bab413', '2023-07-18 20:17:47', 'az.webp', 'block'),
+(8, 'Jane', 'Deleon', 'jdCoke', 'janedeleon@olicia.com', 'ba3253876aed6bc22d4a6ff53d8406c6ad864195ed144ab5c87621b6c233b548baeae6956df346ec8c17f5ea10f35ee3cbc514797ed7ddd3145464e2a0bab413', '2023-07-22 07:36:23', 'jd.jpg', 'block'),
+(9, 'Donkey', 'Kong', 'dkong', 'dk@gmail.com', 'ba3253876aed6bc22d4a6ff53d8406c6ad864195ed144ab5c87621b6c233b548baeae6956df346ec8c17f5ea10f35ee3cbc514797ed7ddd3145464e2a0bab413', '2023-07-25 16:38:34', 'ddddddd_dk.jpg', 'block'),
+(10, 'Monkey', 'Luffy', 'luffy', 'luffy@gmail.com', 'ba3253876aed6bc22d4a6ff53d8406c6ad864195ed144ab5c87621b6c233b548baeae6956df346ec8c17f5ea10f35ee3cbc514797ed7ddd3145464e2a0bab413', '2023-07-25 16:40:15', '64cf65fd9f6b6OIP_(3).jpg', 'block'),
+(11, 'Sample', 'Sample', 'sample', 'sample@gmail.com', 'ba3253876aed6bc22d4a6ff53d8406c6ad864195ed144ab5c87621b6c233b548baeae6956df346ec8c17f5ea10f35ee3cbc514797ed7ddd3145464e2a0bab413', '2023-07-29 09:26:44', '64cf669d46c4ffghyf.jpg', 'block'),
+(12, 'Ray Marvin', 'Montero', 'rayMont', 'ray@gmail.com', 'ba3253876aed6bc22d4a6ff53d8406c6ad864195ed144ab5c87621b6c233b548baeae6956df346ec8c17f5ea10f35ee3cbc514797ed7ddd3145464e2a0bab413', '2023-07-30 19:41:18', '64cf65952cdbf5dd3047639f836b39515030997dd73c5.jpg', 'block'),
+(13, 'Richaurdie', 'Fernandezz', 'richie', 'rich@gmail.com', 'ba3253876aed6bc22d4a6ff53d8406c6ad864195ed144ab5c87621b6c233b548baeae6956df346ec8c17f5ea10f35ee3cbc514797ed7ddd3145464e2a0bab413', '2023-07-30 19:48:50', '64e70c07cbd10facec1844871f85948cbc0e96db3cfae.jpg', 'block'),
+(14, 'John', 'Smith', 'johnsmith', 'meynard@gmail.com', 'ba3253876aed6bc22d4a6ff53d8406c6ad864195ed144ab5c87621b6c233b548baeae6956df346ec8c17f5ea10f35ee3cbc514797ed7ddd3145464e2a0bab413', '2023-08-01 20:14:14', '64c8f7c8ba048llllllll.jpg', 'block'),
+(15, 'Wonyoung', 'Jang', 'wonyoung', 'wonyoung@gmail.com', 'ba3253876aed6bc22d4a6ff53d8406c6ad864195ed144ab5c87621b6c233b548baeae6956df346ec8c17f5ea10f35ee3cbc514797ed7ddd3145464e2a0bab413', '2023-08-06 17:45:46', '64cf6fade708aa7b61f6c63963b5529bbfd3709361722.jpg', 'block'),
+(16, 'Blizzard', 'Frosty', 'blizzard', 'blizzard@gmail.com', 'ba3253876aed6bc22d4a6ff53d8406c6ad864195ed144ab5c87621b6c233b548baeae6956df346ec8c17f5ea10f35ee3cbc514797ed7ddd3145464e2a0bab413', '2023-08-06 23:53:46', NULL, 'block'),
+(21, 'Hermione', 'Granger', 'hermione', 'hermione@gmail.com', 'ba3253876aed6bc22d4a6ff53d8406c6ad864195ed144ab5c87621b6c233b548baeae6956df346ec8c17f5ea10f35ee3cbc514797ed7ddd3145464e2a0bab413', '2023-08-09 17:24:40', '64e70afa926a4hermione-granger-film-characters-photo-u20.jpg', 'block'),
+(22, 'Harry', 'Potter', 'harry', 'harryP@gmail.com', 'ba3253876aed6bc22d4a6ff53d8406c6ad864195ed144ab5c87621b6c233b548baeae6956df346ec8c17f5ea10f35ee3cbc514797ed7ddd3145464e2a0bab413', '2023-08-17 19:32:39', '64e70aab2089aharrytease706.jpg', 'block'),
+(28, 'Super', 'Mario', 'mario', 'mario@gmail.com', 'ba3253876aed6bc22d4a6ff53d8406c6ad864195ed144ab5c87621b6c233b548baeae6956df346ec8c17f5ea10f35ee3cbc514797ed7ddd3145464e2a0bab413', '2023-08-24 10:34:34', NULL, 'block'),
+(29, 'Squall', 'Leonheart', 'squall', 'squall@recipeshare.com', 'ba3253876aed6bc22d4a6ff53d8406c6ad864195ed144ab5c87621b6c233b548baeae6956df346ec8c17f5ea10f35ee3cbc514797ed7ddd3145464e2a0bab413', '2023-08-24 14:22:43', '64e6f74228087fc0461e35ec3e68476a81022938aa964--fantasy-pictures-final-fantasy.jpg', 'unblock');
 
 --
 -- Indexes for dumped tables
@@ -377,13 +383,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT for table `favorites`
 --
 ALTER TABLE `favorites`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=389;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=390;
 
 --
 -- AUTO_INCREMENT for table `messages`
@@ -395,19 +401,19 @@ ALTER TABLE `messages`
 -- AUTO_INCREMENT for table `recipes`
 --
 ALTER TABLE `recipes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
 
 --
 -- AUTO_INCREMENT for table `subscribers`
 --
 ALTER TABLE `subscribers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=200;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=202;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- Constraints for dumped tables

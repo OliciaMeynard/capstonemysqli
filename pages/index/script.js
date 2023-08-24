@@ -146,7 +146,7 @@ function displayCards(results, containerDiv){
 
 
 
-nav.createNav("./assets/imgs/logo.png", './api/logout.php', 'api/checkIfLoggedIn.php', '#','./pages/upload' ,'./pages/login', './pages/allrecipes', './pages/allrecipes/index.html?search', './pages/profile','./uploads/profpic/', './pages/about', './pages/contact'  )
+nav.createNav("./assets/imgs/logo.png", './api/logout.php', 'api/checkIfLoggedIn.php', '#','./pages/upload' ,'./pages/login', './pages/allrecipes', './pages/allrecipes/index.html?search', './pages/profile','./uploads/profpic/', './pages/about', './pages/contact', './pages/blockpage'  )
 footer.createFooter('./assets/imgs/logo.png')
 
 

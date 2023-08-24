@@ -78,8 +78,8 @@ class Account{
                 $password = hash("sha512", $password);
                 /////////HASHING PASSWORD
          
-                $query = "INSERT INTO ".TBL_USERS."(firstName, lastName, username, email, password,profilePic)
-                                             VALUES('$firstName', '$lastName', '$userName', '$email', '$password', NULL)";
+                $query = "INSERT INTO ".TBL_USERS."(firstName, lastName, username, email, password, profilePic, status)
+                                             VALUES('$firstName', '$lastName', '$userName', '$email', '$password', NULL, 'block')";
                 return $this->con->query($query);          
         
     }

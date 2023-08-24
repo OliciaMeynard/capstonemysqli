@@ -4,13 +4,13 @@ import * as checkLoggedIn from './checkLoggedIn.js'
 
 const headerNav = document.querySelector('.header-nav')
 
-export function createNav (imgSrcLogo, apiLogout, apiCheckLogIn, homeLink,  shareRecipeLink, loginLink, allrecipelink, searchLink, profileLink, profilePicRoute, aboutLink, contactLink) {
+export function createNav (imgSrcLogo, apiLogout, apiCheckLogIn, homeLink,  shareRecipeLink, loginLink, allrecipelink, searchLink, profileLink, profilePicRoute, aboutLink, contactLink, blockPageRoute) {
 
 
 
 
     
-    checkLoggedIn.checkLoggedIn(apiCheckLogIn, profilePicRoute)
+    checkLoggedIn.checkLoggedIn(apiCheckLogIn, profilePicRoute, blockPageRoute)
     const headerSec = document.createElement('header');
     headerSec.classList.add('header', 'section')
     headerSec.setAttribute('data-header', '')
