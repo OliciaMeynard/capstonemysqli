@@ -112,7 +112,7 @@ function show(idRequest){
                 <li class="singleFollower">
                 <a href="../../pages/profile/index.html?uid=${follower.uid}">
                   <img src="${follower.profilePic === null ? '../../uploads/profpic/default.webp' : `../../uploads/profpic/${follower.profilePic}`}" alt="" class="followerImg">
-                  <h5>${follower.userFrom}</h5>
+                  <h5>${follower.userTo}</h5>
                 </a>
   
               </li>

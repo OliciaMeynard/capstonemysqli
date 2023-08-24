@@ -356,10 +356,10 @@ function fetchMessages() {
                 {
                     let id = response.data[i].id
                     return_data.push({
+                        date :  response.data[i].formattedDate,
                         id :  id,
                         name :  response.data[i].name,
                         message :  response.data[i].message,
-                        date :  response.data[i].formattedDate,
                         action : " <button class='btn btn-dark' onclick='destroyMessage(" + id + ")'><ion-icon name='trash-outline'></ion-icon></button></td>"
                     });
                 }
@@ -382,10 +382,10 @@ function fetchMessages() {
         columns : [
 
 
+            { data : 'date' },
             { data : 'id' },
             { data : 'name' },
             { data : 'message' },
-            { data : 'date' },
             { data : 'action' },
         ],
         // dom : 'lBfrtip',

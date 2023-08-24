@@ -58,7 +58,7 @@ function show(idRequest){
         "success" : function (response) { //success yung response
             let parseResponse = JSON.parse(response);
             let data = parseResponse.data
-            profileEmailPic.src = "../../uploads/profpic/"+data.profilePic
+            profileEmailPic.src = `${data.profilePic === null ? `../../uploads/profpic/default.webp` : "../../uploads/profpic/"+data.profilePic}`
             profileEmailname.textContent = `${data.firstName + ' ' + data.lastName}`
             emailSendto.value = data.email
 
